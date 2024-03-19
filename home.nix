@@ -33,6 +33,7 @@ programs.git = {
 	userEmail = "jkurzweg10@gmail.com";
 	extraConfig  = {
 		init.defaultBranch = "master";
+		push.autoSetupRemote = true;
 	};
 };
 
