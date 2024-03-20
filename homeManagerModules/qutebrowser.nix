@@ -6,8 +6,8 @@
 
 		
 		extraConfig = ''
-c.input.insert_mode.leave_on_load = true
-extraConfig = "config.load_autoconfig(false)
+config.load_autoconfig(False)
+c.input.mode_override = "normal"
 		'';
 		keyBindings = {
 			command = {
