@@ -1,7 +1,12 @@
 { config, pkgs, inputs, ... }:
 
 {
-imports = [];
+imports = [
+	#./homeManagerModules/kitty.nix
+	#./homeManagerModules/sh.nix
+	#./homeManagerModules/qutebrowser.nix
+	./homeManagerModule/nvim.nix
+];
 #	++ homeManagerModules;
 
 home.username = "jaimek";
@@ -36,6 +41,8 @@ programs.git = {
 		push.autoSetupRemote = true;
 	};
 };
+
+programs.qutebrowser.enable = true;
 
 programs.firefox = {
 	enable = true;
