@@ -4,8 +4,9 @@
 imports = [
 	#./homeManagerModules/kitty.nix
 	#./homeManagerModules/sh.nix
-	#./homeManagerModules/qutebrowser.nix
-	./homeManagerModule/nvim.nix
+	./homeManagerModules/qutebrowser.nix
+	./homeManagerModules/nvim.nix
+	inputs.nixvim.homeManagerModules.nixvim
 ];
 #	++ homeManagerModules;
 
@@ -25,11 +26,14 @@ home.packages = [
 # Home Manager is pretty good at managing dotfiles. The primary way to manage
 # plain files is through 'home.file'.
 home.file = {
-	#".config/i3/config".source = ./i3-config;
 };
 
 home.sessionVariables = {
 	EDITOR = "nvim";
+};
+
+programs.rofi = {
+	enable = true;
 };
 
 programs.git = {
@@ -42,19 +46,6 @@ programs.git = {
 	};
 };
 
-programs.qutebrowser.enable = true;
-
-programs.firefox = {
-	enable = true;
-	profiles.jaimek = {
-		extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
-			ublock-origin
-			tridactyl
-			dictionaries
-			sponsorblock
-		];
-	};
-};
 
 # Let Home Manager install and manage itself.
 	programs.home-manager.enable = true;
