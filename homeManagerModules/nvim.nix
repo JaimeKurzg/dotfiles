@@ -1,9 +1,5 @@
 {config, pkgs, ...}:
-let 
-	toLua = str: "lua << EOF\n${str}\nEOF\n";
-	toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
-	readFile = file: "${builtins.readFile file}";
-in {
+{
 
 	programs.nixvim = {
 		enable = true;
@@ -46,38 +42,52 @@ in {
 					"<leader>cd" = "actions.cd";
 				};
 			};
+			treesitter = {
+				folding = true;
+				indent = true;
+				ensureInstalled = [
+					"tree-sitter-nix"
+				];
+			};
 			lsp = {
 				enable = true;
 				servers = {
 					nil_ls.enable = true;
 				};
 			};
-				nvim-cmp = {
-					enable = true;
-					autoEnableSources = true;
-					sources = [
+			nvim-cmp = {
+				enable = true;
+				autoEnableSources = true;
+				sources = [
 					{name = "nvim_lsp";}
 					{name = "path";}
 					{name = "buffer";}
 					{name = "luasnip";}
-					];
+				];
 
-	mapping = {
-		"<Tab>" = "cmp.mapping.confirm({ select = true })";
-		"<Ctrl-n>" = {
-			action = ''
-				function(fallback)
-					if cmp.visible() then
-						cmp.select_next_item()
-					else
-						fallback()
-					end
-				end
-						'';
-			modes = [ "i" "s" ];
-		};
-	};
-  };
+				mapping = {
+					"<Tab>" = "cmp.mapping.confirm({ select = true })";
+					"<Ctrl-n>" = {
+						action = ''
+							function(fallback)
+								if cmp.visible() then
+									cmp.select_next_item()
+								else
+									fallback()
+								end
+							end
+									'';
+						modes = [ "i" "s" ];
+					};
+				};
+			};
+			flash = {
+				enable = true;
+				jump.autojump = true;
+			};
+
+			fugitive.enable = true;
+			surround.enable = true;
 		};
 
 
@@ -156,7 +166,7 @@ in {
 			{
 				mode = "n";
 				key = "<leader>f";
-				action = "vim.lsp.buf.format";
+				action = "<cmd>lua vim.lsp.buf.format()";
 			}
 			{
 				mode = "n";
@@ -176,6 +186,9 @@ in {
 				options = { silent = true; };
 			}
 
+
+
+# plugin keys
 			{
 				mode = "n";
 				key = "<leader>vpp";
@@ -185,6 +198,14 @@ in {
 				action = "<cmd>Oil<cr>";
 				key = "<leader>k";
 				mode = "n";
+			}
+			{
+				key = "S";
+				action = ''<cmd>lua require("flash").treesitter()<CR>'';
+			}
+			{
+				key = "s";
+				action = ''<cmd>lua require("flash").jump()<CR>'';
 			}
 
 		];

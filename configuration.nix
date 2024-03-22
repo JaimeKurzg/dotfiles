@@ -5,11 +5,17 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.xremap-flake.nixosModules.default
-    ];
+	imports =
+		[ # Include the results of the hardware scan.
+			./hardware-configuration.nix
+			./sh.nix
+			./syncthing.nix
+			inputs.xremap-flake.nixosModules.default
+			inputs.nixvim.nixosModules.nixvim
+			inputs.stylix.nixosModules.stylix
+		];
+
+	stylix.image = "${./.wallpaper.png}";
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -107,12 +113,9 @@
     description = "Jaime Kurzweg";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      firefox
-    #  thunderbird
+		discord
     ];
   };
-
-	programs.firefox.nativeMessagingHosts.tridactyl = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -124,6 +127,7 @@
   environment.systemPackages = with pkgs; [
   	kitty
 	pulseaudioFull
+	playerctl
 	brightnessctl
 	git
 	git-credential-manager
@@ -131,12 +135,20 @@
 	gnupg
 	pinentry
 	pass-git-helper
+	xclip
+	fd
+	zsh
+	fzf
+	zoxide
+	oh-my-zsh
+	bat
   ];
 
-  programs.neovim = {
-	  enable = true;
-	  defaultEditor= true;
-  };
+  programs.fzf = {
+	  keybindings = true;
+	  fuzzyCompletion = true;
+	};
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

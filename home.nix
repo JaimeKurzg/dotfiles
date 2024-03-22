@@ -6,9 +6,12 @@ imports = [
 	#./homeManagerModules/sh.nix
 	./homeManagerModules/qutebrowser.nix
 	./homeManagerModules/nvim.nix
+	./homeManagerModules/zsh.nix
 	inputs.nixvim.homeManagerModules.nixvim
 ];
 #	++ homeManagerModules;
+
+nixpkgs.config.allowUnfree = true;
 
 home.username = "jaimek";
 home.homeDirectory = "/home/jaimek";
@@ -18,9 +21,8 @@ home.homeDirectory = "/home/jaimek";
 # release notes.
 home.stateVersion = "23.11"; # Please read the comment before changing.
 
-home.packages = [
-	pkgs.spotify-player
-	pkgs.tridactyl-native
+home.packages = with pkgs; [
+	spotify-player
 ];
 
 # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -45,7 +47,6 @@ programs.git = {
 		push.autoSetupRemote = true;
 	};
 };
-
 
 # Let Home Manager install and manage itself.
 	programs.home-manager.enable = true;
