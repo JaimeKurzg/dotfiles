@@ -2,8 +2,8 @@
 
 {
 imports = [
-	#./homeManagerModules/kitty.nix
-	#./homeManagerModules/sh.nix
+	./homeManagerModules/spotify.nix
+	./homeManagerModules/youtube.nix
 	./homeManagerModules/qutebrowser.nix
 	./homeManagerModules/nvim.nix
 	./homeManagerModules/zsh.nix

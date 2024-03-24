@@ -134,21 +134,23 @@
 	pass
 	gnupg
 	pinentry
+	pinentry-curses
 	pass-git-helper
-	xclip
-	fd
-	zsh
-	fzf
-	zoxide
-	oh-my-zsh
-	bat
+
+	htop
+	ranger
   ];
 
-  programs.fzf = {
-	  keybindings = true;
-	  fuzzyCompletion = true;
+	programs.gnupg = {
+		agent = {
+			enable = true;
+			pinentryFlavor = "curses";
+		};
+
 	};
 
+	programs.zsh.enable = true;
+	users.defaultUserShell = pkgs.zsh;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
