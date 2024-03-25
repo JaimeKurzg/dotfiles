@@ -37,10 +37,15 @@
 				enable = true;
 				defaultFileExplorer = true;
 				keymaps = {
+					"<leader>\\" = "actions.select_split";
+					"<leader>r" = "actions.refresh";
 					"<Leader>k" = "actions.parent";
 					"<Leader>j" = "actions.select";
+					"<Leader>p" = "actions.preview";
+					"<Leader>." = "actions.toggle_hidden";
 					"<leader>cd" = "actions.cd";
 				};
+				useDefaultKeymaps = false;
 			};
 			treesitter = {
 				folding = true;
@@ -55,6 +60,7 @@
 					nil_ls.enable = true;
 				};
 			};
+			cmp_luasnip.enable = true;
 			nvim-cmp = {
 				enable = true;
 				autoEnableSources = true;
@@ -66,28 +72,65 @@
 				];
 
 				mapping = {
-					"<Tab>" = "cmp.mapping.confirm({ select = true })";
-					"<Ctrl-n>" = {
-						action = ''
-							function(fallback)
-								if cmp.visible() then
-									cmp.select_next_item()
-								else
-									fallback()
-								end
-							end
-									'';
-						modes = [ "i" "s" ];
-					};
+					"<Ctrl-y>" = "cmp.mapping.confirm({ select = true })";
+					"<Ctrl-n>" = "cmp.mapping.select_next_item()";
+					"<Ctrl-p>" = "cmp.mapping.select_prev_item()";
 				};
 			};
 			flash = {
 				enable = true;
-				jump.autojump = true;
 			};
 
 			fugitive.enable = true;
 			surround.enable = true;
+			tmux-navigator.enable = true;
+			telescope = {
+				enable = true;
+				keymaps = {
+					"<leader>sh" = { 
+						action = "help_tags";
+						desc = "[S]earch [H]elp"; 
+					};
+					"<leader>sk" = { 
+						action = "keymaps";
+						desc = "[S]earch [K]eymaps"; 
+					};
+					"<leader>sf" = { 
+						action = "find_files";
+						desc = "[S]earch [F]iles"; 
+					};
+					"<leader>ss" = { 
+						action = "builtin";
+						desc = "[S]earch [S]elect Telescope"; 
+					};
+					"<leader>sw" = { 
+						action = "grep_string";
+						desc = "[S]earch current [W]ord"; 
+					};
+					"<leader>sg" = { 
+						action = "live_grep";
+						desc = "[S]earch by [G]rep"; 
+					};
+					"<leader>sd" = { 
+						action = "diagnostics";
+						desc = "[S]earch [D]iagnostics"; 
+					};
+					"<leader>sr" = { 
+						action = "resume";
+						desc = "[S]earch [R]esume"; 
+					};
+					"<leader>s." = { 
+						action = "oldfiles";
+						desc = "[S]earch Recent Files ('.' for repeat)"; 
+					};
+					"<leader><leader>" = { 
+						action = "buffers";
+						desc = "[ ] Find existing buffers"; 
+					};
+				};
+
+
+			};
 		};
 
 

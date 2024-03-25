@@ -50,6 +50,37 @@
 		prefix = "C-a";
 		mouse = false;
 		shell = "${pkgs.zsh}/bin/zsh";
+		keyMode = "vi";
+		extraConfig = ''
+			# split panes using | and -
+			bind | split-window -h
+			bind - split-window -v
+			unbind '"'
+			unbind %
+
+# reload config file (change file location to your the tmux.conf you want to use)
+			bind r source-file ~/.tmux.conf
+			'';
+		plugins = 
+			with pkgs.tmuxPlugins; [
+			sensible
+			vim-tmux-navigator
+			cpu
+			{
+				plugin = resurrect;
+				extraConfig = "set -g @resurrect-strategy-nvim 'session'";
+			}
+			{
+				plugin = continuum;
+				extraConfig = ''
+					set -g @continuum-restore 'on'
+					set -g @continuum-save-interval '60' # minutes
+					'';
+			}
+			onedark-theme
+			jump
+			];
+
 	};
 
 }
