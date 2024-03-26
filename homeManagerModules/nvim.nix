@@ -1,5 +1,8 @@
 {config, pkgs, ...}:
 {
+	home.packages = with pkgs; [
+		ripgrep
+	];
 
 	programs.nixvim = {
 		enable = true;
