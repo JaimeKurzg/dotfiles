@@ -15,11 +15,6 @@
 
 	programs.kitty = {
 		enable = true;
-		theme = "Space Gray Eighties";
-#	font = {
-#		name = "Awesome";
-#		package = pkgs.font-awesome;
-#	};
 	};
 
 	programs.zoxide = {

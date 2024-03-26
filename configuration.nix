@@ -9,14 +9,13 @@
 		[ # Include the results of the hardware scan.
 			./hardware-configuration.nix
 			./syncthing.nix
+			./style.nix
 			inputs.xremap-flake.nixosModules.default
 			inputs.nixvim.nixosModules.nixvim
-		#	inputs.stylix.nixosModules.stylix
 		];
 
-
 	programs.dconf.enable = true;
-	stylix.image = "${./.wallpaper.png}";
+	#stylix.image = "${./.wallpaper.png}";
 
 # Bootloader.
 	boot.loader.systemd-boot.enable = true;
@@ -141,6 +140,7 @@
 
 			htop
 			ranger
+			feh
 	];
 
 	programs.gnupg = {
@@ -153,6 +153,16 @@
 
 	programs.zsh.enable = true;
 	users.defaultUserShell = pkgs.zsh;
+
+	services.spotifyd = {
+		enable = true;
+		settings.global = {
+			username = "jkurzweg10@gmail.com";
+			password_cmd = "pass spotify";
+			device_name = "spotifyd";
+		};
+
+	};
 
 # Some programs need SUID wrappers, can be configured further or are
 # started in user sessions.
