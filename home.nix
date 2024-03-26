@@ -2,16 +2,16 @@
 
 {
 imports = [
+	inputs.nixvim.homeManagerModules.nixvim
 	./homeManagerModules/spotify.nix
 	./homeManagerModules/youtube.nix
 	./homeManagerModules/qutebrowser.nix
 	./homeManagerModules/nvim.nix
 	./homeManagerModules/zsh.nix
-	inputs.nixvim.homeManagerModules.nixvim
 ];
 #	++ homeManagerModules;
 
-nixpkgs.config.allowUnfree = true;
+#nixpkgs.config.allowUnfree = true;
 
 home.username = "jaimek";
 home.homeDirectory = "/home/jaimek";
@@ -22,7 +22,6 @@ home.homeDirectory = "/home/jaimek";
 home.stateVersion = "23.11"; # Please read the comment before changing.
 
 home.packages = with pkgs; [
-	spotify-player
 ];
 
 # Home Manager is pretty good at managing dotfiles. The primary way to manage
