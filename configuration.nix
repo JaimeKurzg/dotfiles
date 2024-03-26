@@ -16,7 +16,7 @@
 
 
 	programs.dconf.enable = true;
-	#stylix.image = "${./.wallpaper.png}";
+	stylix.image = "${./.wallpaper.png}";
 
 # Bootloader.
 	boot.loader.systemd-boot.enable = true;

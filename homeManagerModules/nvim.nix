@@ -34,7 +34,7 @@
 			updatetime = 50;
 		};
 
-		colorschemes.rose-pine.enable = true;
+		#colorschemes.rose-pine.enable = true;
 		plugins = {
 			oil = {
 				enable = true;

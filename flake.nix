@@ -5,7 +5,7 @@
 		nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-23.11";
 		home-manager.url = "github:nix-community/home-manager/release-23.11";
 		home-manager.inputs.nixpkgs.follows = "nixpkgs";
-		stylix.url = "github:danth/stylix";
+		stylix.url = "github:danth/stylix/release-23.11";
 		xremap-flake.url = "github:xremap/nix-flake";
 		nixvim = {
 			url = "github:nix-community/nixvim/nixos-23.11";
@@ -13,7 +13,7 @@
 		};
 	};
 
-	outputs = { self, nixpkgs, home-manager, ... }@inputs:
+	outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs:
 		let 
 		lib = nixpkgs.lib;
 	system = "x86_64-linux";
@@ -36,6 +36,7 @@
 							inherit inputs;
 						};
 					}
+					stylix.nixosModules.stylix
 
 				];
 			};
