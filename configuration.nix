@@ -141,6 +141,7 @@
 			htop
 			ranger
 			feh
+			unzip
 	];
 
 	programs.gnupg = {
