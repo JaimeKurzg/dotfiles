@@ -31,12 +31,13 @@
 		autocd = true;
 		enableAutosuggestions = true;
 		enableCompletion = true;
-		defaultKeymap = "vicmd";
+		defaultKeymap = "viins";
 		shellAliases = {
 			"clip" = "xclip -selection clipboard";
 			"cat" = "bat";
 		};
 		initExtra = ''
+			bindkey -v '^?' backward-delete-char
 			eval "$(zoxide init zsh --cmd cd)"
 			'';
 	};

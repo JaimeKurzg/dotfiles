@@ -34,7 +34,7 @@
 			updatetime = 50;
 		};
 
-		#colorschemes.rose-pine.enable = true;
+#colorschemes.rose-pine.enable = true;
 		plugins = {
 			oil = {
 				enable = true;
@@ -63,21 +63,23 @@
 					nil_ls.enable = true;
 				};
 			};
-			cmp_luasnip.enable = true;
 			nvim-cmp = {
 				enable = true;
 				autoEnableSources = true;
 				sources = [
 					{name = "nvim_lsp";}
 					{name = "path";}
-					{name = "buffer";}
 					{name = "luasnip";}
+					{name = "buffer";}
 				];
-
 				mapping = {
-					"<Ctrl-y>" = "cmp.mapping.confirm({ select = true })";
-					"<Ctrl-n>" = "cmp.mapping.select_next_item()";
-					"<Ctrl-p>" = "cmp.mapping.select_prev_item()";
+					"<C-Space>" = "cmp.mapping.complete()";
+					"<C-d>" = "cmp.mapping.scroll_docs(-4)";
+					"<Esc>" = "cmp.mapping.abort()";
+					"<C-f>" = "cmp.mapping.scroll_docs(4)";
+					"<C-y>" = "cmp.mapping.confirm({ select = true })";
+					"<C-p>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
+					"<C-n>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
 				};
 			};
 			flash = {
@@ -138,121 +140,120 @@
 
 
 		keymaps = [
+		{
+			mode = "n";
+			key = ";";
+			action = ":";
+		}
+		{
+			mode = "v";
+			key = "J";
+			action = ":m '>+1<CR>gv=gv";
+		}
+		{
+			mode = "v";
+			key = "K";
+			action = ":m '<-2<CR>gv=gv";
+		}
 
-			{
-				mode = "n";
-				key = ";";
-				action = ":";
-			}
-			{
-				mode = "v";
-				key = "J";
-				action = ":m '>+1<CR>gv=gv";
-			}
-			{
-				mode = "v";
-				key = "K";
-				action = ":m '<-2<CR>gv=gv";
-			}
+		{
+			mode = "n";
+			key = "J";
+			action = "mzJ`z";
+		}
+		{
+			mode = "n";
+			key = "<C-d>";
+			action = "<C-d>zz";
+		}
+		{
+			mode = "n";
+			key = "<C-u>";
+			action = "<C-u>zz";
+		}
+		{
+			mode = "n";
+			key = "n";
+			action = "nzzzv";
+		}
+		{
+			mode = "n";
+			key = "N";
+			action = "Nzzzv";
+		}
 
-			{
-				mode = "n";
-				key = "J";
-				action = "mzJ`z";
-			}
-			{
-				mode = "n";
-				key = "<C-d>";
-				action = "<C-d>zz";
-			}
-			{
-				mode = "n";
-				key = "<C-u>";
-				action = "<C-u>zz";
-			}
-			{
-				mode = "n";
-				key = "n";
-				action = "nzzzv";
-			}
-			{
-				mode = "n";
-				key = "N";
-				action = "Nzzzv";
-			}
+		{
+			mode = "x";
+			key = "<leader>p";
+			action = ''"_dP'';
+		}
 
-			{
-				mode = "x";
-				key = "<leader>p";
-				action = ''"_dP'';
-			}
+		{
+			mode = ["n" "v"];
+			key = "<leader>y";
+			action = ''"+y'';
+		}
+		{
+			mode = "n";
+			key = "<leader>Y";
+			action = ''"+Y'';
+		}
 
-			{
-				mode = ["n" "v"];
-				key = "<leader>y";
-				action = ''"+y'';
-			}
-			{
-				mode = "n";
-				key = "<leader>Y";
-				action = ''"+Y'';
-			}
+		{
+			mode = ["n" "v"];
+			key = "<leader>d";
+			action = ''"_d'';
+		}
 
-			{
-				mode = ["n" "v"];
-				key = "<leader>d";
-				action = ''"_d'';
-			}
+		{
+			mode = "n";
+			key = "Q";
+			action = "<nop>";
+		}
+		{
+			mode = "n";
+			key = "<leader>f";
+			action = "<cmd>lua vim.lsp.buf.format()";
+		}
+		{
+			mode = "n";
+			key = "<leader>e";
+			action = "<cmd>lua vim.diagnostic.open_float()<CR>";
+		}
 
-			{
-				mode = "n";
-				key = "Q";
-				action = "<nop>";
-			}
-			{
-				mode = "n";
-				key = "<leader>f";
-				action = "<cmd>lua vim.lsp.buf.format()";
-			}
-			{
-				mode = "n";
-				key = "<leader>e";
-				action = "<cmd>lua vim.diagnostic.open_float()<CR>";
-			}
-
-			{
-				mode = "n";
-				key = "<leader>s";
-				action = '':%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>'';
-			}
-			{
-				mode = "n";
-				key = "<leader>x";
-				action = "<cmd>!chmod +x %<CR>";
-				options = { silent = true; };
-			}
+		{
+			mode = "n";
+			key = "<leader>s";
+			action = '':%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>'';
+		}
+		{
+			mode = "n";
+			key = "<leader>x";
+			action = "<cmd>!chmod +x %<CR>";
+			options = { silent = true; };
+		}
 
 
 
 # plugin keys
-			{
-				mode = "n";
-				key = "<leader>vpp";
-				action = "<cmd>Oil ~/.config/nvim/<CR>";
-			}
-			{
-				action = "<cmd>Oil<cr>";
-				key = "<leader>k";
-				mode = "n";
-			}
-			{
-				key = "S";
-				action = ''<cmd>lua require("flash").treesitter()<CR>'';
-			}
-			{
-				key = "s";
-				action = ''<cmd>lua require("flash").jump()<CR>'';
-			}
+		{
+			mode = "n";
+			key = "<leader>vpp";
+			action = "<cmd>Oil ~/.config/nvim/<CR>";
+		}
+		{
+			action = "<cmd>Oil<cr>";
+			key = "<leader>k";
+			mode = "n";
+		}
+		{
+			key = "S";
+			action = ''<cmd>lua require("flash").treesitter()<CR>'';
+		}
+		{
+			key = "s";
+			action = ''<cmd>lua require("flash").jump()<CR>'';
+		}
 
 		];
 	};
