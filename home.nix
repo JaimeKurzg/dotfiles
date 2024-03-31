@@ -3,6 +3,7 @@
 {
 imports = [
 	inputs.nixvim.homeManagerModules.nixvim
+	inputs.sops-nix.homeManagerModules.sops
 	./homeManagerModules/spotify.nix
 	./homeManagerModules/youtube.nix
 	./homeManagerModules/qutebrowser.nix
@@ -46,6 +47,14 @@ programs.git = {
 		init.defaultBranch = "master";
 		push.autoSetupRemote = true;
 	};
+};
+
+sops = {
+	defaultSopsFile = ./secrets/secrets.yaml;
+	defaultSopsFormat = "yaml";
+	age.keyFile = "/home/jaimek/.config/sops/age/keys.txt";
+	defaultSymlinkPath = "/run/user/1000/secrets";
+    defaultSecretsMountPoint = "/run/user/1000/secrets.d";
 };
 
 # Let Home Manager install and manage itself.

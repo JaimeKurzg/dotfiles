@@ -1,4 +1,4 @@
-{pkgs, ...} : {
+{pkgs, config, ...} : {
 	home.packages = with pkgs; [
 		spotify-tui
 	];
@@ -7,8 +7,8 @@
 		enable = true;
 		settings.global = {
 			username = "jkurzweg10@gmail.com";
-			password_cmd = "pass spotify";
+			password_cmd = "cat ${config.sops.secrets.spotify.path}";
 		};
-
 	};
+	sops.secrets.spotify = {};
 }
