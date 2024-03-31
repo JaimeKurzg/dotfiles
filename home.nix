@@ -22,6 +22,7 @@ home.homeDirectory = "/home/jaimek";
 home.stateVersion = "23.11"; # Please read the comment before changing.
 
 home.packages = with pkgs; [
+	(callPackage ./derivations/goost.nix {})
 ];
 
 # Home Manager is pretty good at managing dotfiles. The primary way to manage
