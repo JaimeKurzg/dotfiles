@@ -7,15 +7,14 @@
 {
 	imports =
 		[ # Include the results of the hardware scan.
-			./hardware-configuration.nix
-			./syncthing.nix
-			./style.nix
+		./hardware-configuration.nix
+			./modules/syncthing.nix
+			./modules/style.nix
+			./modules/nixld.nix
 			inputs.xremap-flake.nixosModules.default
 			inputs.nixvim.nixosModules.nixvim
 		];
-
 	programs.dconf.enable = true;
-	#stylix.image = "${./.wallpaper.png}";
 
 # Bootloader.
 	boot.loader.systemd-boot.enable = true;

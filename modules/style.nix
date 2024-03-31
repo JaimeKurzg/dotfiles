@@ -2,7 +2,7 @@
 
 let
 theme = "${pkgs.base16-schemes}/share/themes/unikitty-dark.yaml";
-wallpaper = "${./.wallpaper.png}";
+wallpaper = ./.wallpaper.png;
 in 
 {
 	stylix = {
