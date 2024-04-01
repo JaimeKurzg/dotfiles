@@ -139,8 +139,9 @@
 
 			htop
 			ranger
-			feh
 			unzip
+			lmms
+			jujutsu
 	];
 
 	programs.gnupg = {
