@@ -1,0 +1,25 @@
+[[keymaps]]
+command = "None"
+key_sequence = "space"
+[[keymaps]]
+command = "ChooseSelected"
+key_sequence = "space j"
+[[keymaps]]
+command = "FocusNextWindow"
+key_sequence = "l"
+[[keymaps]]
+command = "FocusPreviousWindow"
+key_sequence = "h"
+[[keymaps]]
+command = "PageSelectNextOrScrollDown"
+key_sequence = "C-d"
+[[keymaps]]
+command = "PageSelectPreviousOrScrollUp"
+key_sequence = "C-u"
+[[keymaps]]
+command = "PreviousPage"
+key_sequence = "space k"
+[[keymaps]]
+command = "ResumePause"
+key_sequence = "M-p"
+

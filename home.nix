@@ -4,7 +4,7 @@
 imports = [
 	inputs.nixvim.homeManagerModules.nixvim
 	inputs.sops-nix.homeManagerModules.sops
-	./homeManagerModules/spotify.nix
+	./homeManagerModules/spotify/spotify.nix
 	./homeManagerModules/youtube.nix
 	./homeManagerModules/qutebrowser.nix
 	./homeManagerModules/nvim.nix
