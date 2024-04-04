@@ -141,7 +141,11 @@
 			ranger
 			unzip
 			lmms
+			pavucontrol
+			feh
 			jujutsu
+			gnome.cheese
+			gimp
 	];
 
 	programs.gnupg = {
