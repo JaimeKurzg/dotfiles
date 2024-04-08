@@ -7,10 +7,12 @@
 {
 	imports =
 		[ # Include the results of the hardware scan.
-		./hardware-configuration.nix
+            inputs.musnix.nixosModules.musnix
+			./hardware-configuration.nix
 			./modules/syncthing.nix
 			./modules/style.nix
 			./modules/nixld.nix
+			./modules/lmms.nix
 			inputs.xremap-flake.nixosModules.default
 			inputs.nixvim.nixosModules.nixvim
 		];
@@ -126,26 +128,25 @@
 # $ nix search wget
 	environment.systemPackages = with pkgs; [
 		kitty
-			pulseaudioFull
-			playerctl
-			brightnessctl
-			git
-			git-credential-manager
-			pass
-			gnupg
-			pinentry
-			pinentry-curses
-			pass-git-helper
+		pulseaudioFull
+		playerctl
+		brightnessctl
+		git
+		git-credential-manager
+		pass
+		gnupg
+		pinentry
+		pinentry-curses
+		pass-git-helper
 
-			htop
-			ranger
-			unzip
-			lmms
-			pavucontrol
-			feh
-			jujutsu
-			gnome.cheese
-			gimp
+		htop
+		ranger
+		unzip
+		pavucontrol
+		feh
+		jujutsu
+		gnome.cheese
+		gimp
 	];
 
 	programs.gnupg = {
