@@ -34,7 +34,7 @@
 			updatetime = 50;
 		};
 
-#colorschemes.rose-pine.enable = true;
+		extraPlugins = [pkgs.vimPlugins.ccc-nvim];
 		plugins = {
 			oil = {
 				enable = true;
@@ -232,6 +232,7 @@
 			action = "<cmd>!chmod +x %<CR>";
 			options = { silent = true; };
 		}
+		{ mode = "n"; key = "<leader>cc"; action = "<cmd>CccPick<cr>"; }
 
 
 

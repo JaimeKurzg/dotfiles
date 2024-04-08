@@ -50,6 +50,14 @@
 			bindkey -v '^?' backward-delete-char
 			eval "$(zoxide init zsh --cmd cd)"
 			export NIX_BUILD_SHELL=zsh
+			rebuild() {
+				pushd ~/.dotfiles/;
+				echo "NixOS Rebuilding...";
+				sudo nixos-rebuild switch --flake . &>nixos-switch.log || (
+				cat nixos-switch.log | grep --color error && false);
+				gen=$(nixos-rebuild list-generations | grep current);
+				popd;
+			}
 			'';
 	};
 	programs.tmux = {

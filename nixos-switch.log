@@ -1,0 +1,25 @@
+warning: Git tree '/home/jaimek/.dotfiles' is dirty
+building the system configuration...
+warning: Git tree '/home/jaimek/.dotfiles' is dirty
+error:
+       … while calling the 'head' builtin
+
+         at /nix/store/9fpv0kjq9a80isa1wkkvrdqsh9dpcn05-source/lib/attrsets.nix:922:11:
+
+          921|         || pred here (elemAt values 1) (head values) then
+          922|           head values
+             |           ^
+          923|         else
+
+       … while evaluating the attribute 'value'
+
+         at /nix/store/9fpv0kjq9a80isa1wkkvrdqsh9dpcn05-source/lib/modules.nix:807:9:
+
+          806|     in warnDeprecation opt //
+          807|       { value = builtins.addErrorContext "while evaluating the option `${showOption loc}':" value;
+             |         ^
+          808|         inherit (res.defsFinal') highestPrio;
+
+       (stack trace truncated; use '--show-trace' to show the full trace)
+
+       error: the path '~/.config/nvim/' can not be resolved in pure mode
