@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, unstable, inputs, ... }:
 {
 	imports =
 		[ # Include the results of the hardware scan.
@@ -149,10 +149,10 @@ nix.settings = {
 		unzip
 		pavucontrol
 		feh
-		jujutsu
 		gnome.cheese
 		gimp
 		lutris
+		unstable.jujutsu
 	];
 
 	programs.steam.enable = true;
