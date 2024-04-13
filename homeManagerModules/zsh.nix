@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-
 	home.packages = with pkgs; [
 		zoxide
 			xclip
@@ -50,6 +49,7 @@
 			bindkey -v '^?' backward-delete-char
 			eval "$(zoxide init zsh --cmd cd)"
 			export NIX_BUILD_SHELL=zsh
+
 			rebuild() {
 				pushd ~/.dotfiles/;
 				echo "NixOS Rebuilding...";
@@ -80,7 +80,6 @@
 			with pkgs.tmuxPlugins; [
 			sensible
 			vim-tmux-navigator
-			cpu
 			{
 				plugin = resurrect;
 				extraConfig = "set -g @resurrect-strategy-nvim 'session'";
