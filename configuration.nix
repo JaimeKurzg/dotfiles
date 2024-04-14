@@ -53,14 +53,24 @@
 	};
 
 # Enable the X11 windowing system.
-	services.xserver.enable = true;
+#	services.xserver.enable = true;
+  services.greetd = {
+    enable = true;
+    settings = {
+     default_session.command = ''
+      ${pkgs.greetd.tuigreet}/bin/tuigreet \
+        --time \
+        --asterisks \
+        --user-menu \
+        --cmd sway
+    '';
+    };
+  };
 
-# Enable the LXQT Desktop Environment.
-	services.xserver.displayManager.lightdm.enable = true;
-# services.xserver.desktopManager.lxqt.enable = true;
-	services.xserver.windowManager = {
-		i3.enable = true;
-	};
+  environment.etc."greetd/environments".text = ''
+    sway
+  '';
+	security.polkit.enable = true; # for sway
 
 # Configure keymap in X11
 	services.xserver = {
