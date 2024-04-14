@@ -6,7 +6,6 @@
 {
 	imports =
 		[ # Include the results of the hardware scan.
-            inputs.musnix.nixosModules.musnix
 			./hardware-configuration.nix
 			./modules/syncthing.nix
 			./modules/style.nix
@@ -133,7 +132,7 @@ nix.settings = {
 # $ nix search wget
 	environment.systemPackages = with pkgs; [
 		kitty
-		pulseaudioFull
+		pulseaudioFull # allows for increase and decrease sound
 		playerctl
 		brightnessctl
 		git
