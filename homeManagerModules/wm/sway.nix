@@ -35,9 +35,9 @@
 			};
 		};
 		extraConfig = ''
-			bindsym XF86AudioRaiseVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ +10%'
-			bindsym XF86AudioLowerVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ -10%'
-			bindsym XF86AudioMute exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle'
+			bindsym XF86AudioRaiseVolume exec 'wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+'
+			bindsym XF86AudioLowerVolume exec 'wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%-'
+			bindsym XF86AudioMute exec 'wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle'
 			'';
 	};
 
