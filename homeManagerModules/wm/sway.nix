@@ -19,6 +19,7 @@
 			];
 			keybindings = let
 				modifier = config.wayland.windowManager.sway.config.modifier;
+				mod2 = "Mod4";
 			in lib.mkOptionDefault {
 				"${modifier}+t" = "exec ${pkgs.kitty}/bin/kitty";
 				"${modifier}+b" = "exec ${pkgs.qutebrowser}/bin/qutebrowser";
@@ -28,6 +29,7 @@
 				"${modifier}+Shift+0" = "move container to workspace number 10";
 				"XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
 				"XF86MonBrightnessUp" = "exec brightnessctl set 5%+";
+				"${modifier}+w" = "workspace number 10; exec kitty -e spotify_player";
 			};
 
 			defaultWorkspace = "3";
