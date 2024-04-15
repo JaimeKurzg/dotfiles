@@ -20,7 +20,8 @@ cover_img_length = 10
 cover_img_width = 5
 cover_img_scale = 1.0
 playback_window_width = 6
-enable_media_control = true
+enable_notify = false
+enable_media_control = false
 enable_streaming = "Always"
 enable_cover_image_cache = true
 default_device = "spotify-player"
@@ -31,10 +32,6 @@ args = [
     "-sel",
     "c",
 ]
-
-[notify_format]
-summary = "{track} • {artists}"
-body = "{album}"
 
 [device]
 name = "spotify-player"

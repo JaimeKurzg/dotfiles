@@ -53,11 +53,11 @@
   
   #workspaces button {
     margin-right: 10px;
-    color: #ffffff;
+    color: #${config.lib.stylix.colors.base05};
   }
   #workspaces button:hover, #workspaces button:active {
     background-color: #292828;
-    color: #ffffff;
+    color: #${config.lib.stylix.colors.base05};
   }
   #workspaces button.focused {
     background-color: #383737;

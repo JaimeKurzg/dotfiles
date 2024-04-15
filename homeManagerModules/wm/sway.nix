@@ -6,11 +6,13 @@
 	];
 	wayland.windowManager.sway = {
 		enable = true;
+		swaynag.enable = false;
 		config = {
 			bars = [ {command = "${pkgs.waybar}/bin/waybar";
 			}];
 			window.border = 0;
 			window.titlebar = false;
+			workspaceAutoBackAndForth = true;
 			modifier = "Mod1";
 			terminal = "kitty"; 
 
