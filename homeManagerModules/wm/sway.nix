@@ -15,28 +15,21 @@
 			terminal = "kitty"; 
 
 			startup = [
-			{command = "qutebrowser";}
+				{command = ''exec swaymsg "workspace 3; exec qutebrowser"'';}
 			];
 			keybindings = let
 				modifier = config.wayland.windowManager.sway.config.modifier;
 				mod2 = "Mod4";
 			in lib.mkOptionDefault {
 				"${modifier}+t" = "exec ${pkgs.kitty}/bin/kitty";
-				"${modifier}+b" = "exec ${pkgs.qutebrowser}/bin/qutebrowser";
+				"${modifier}+b" = "workspace number 3; exec ${pkgs.qutebrowser}/bin/qutebrowser";
 				"${modifier}+q" = "kill";
 				"${modifier}+d" = "exec ${pkgs.rofi}/bin/rofi -show drun";
 				"${modifier}+0" = "workspace number 10";
 				"${modifier}+Shift+0" = "move container to workspace number 10";
+				"${modifier}+w" = "workspace number 10; exec kitty -e spotify_player";
 				"XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
 				"XF86MonBrightnessUp" = "exec brightnessctl set 5%+";
-				"${modifier}+w" = "workspace number 10; exec kitty -e spotify_player";
-			};
-
-			defaultWorkspace = "3";
-			assigns = {
-				"1" = [{ class = "^kitty$"; }];
-				"3" = [{ class = "^qutebrowser$"; }];
-				"10" = [{ class = "^spotify-player$";}];
 			};
 		};
 		extraConfig = ''
