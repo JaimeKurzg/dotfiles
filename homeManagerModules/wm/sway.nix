@@ -23,7 +23,7 @@
 				"${modifier}+t" = "exec ${pkgs.kitty}/bin/kitty";
 				"${modifier}+b" = "exec ${pkgs.qutebrowser}/bin/qutebrowser";
 				"${modifier}+q" = "kill";
-				"${modifier}+d" = "exec ${pkgs.rofi}/bin/rofi -show drun | ${pkgs.dmenu}/bin/dmenu | ${pkgs.findutils}/bin/xargs swaymsg exec --";
+				"${modifier}+d" = "exec ${pkgs.rofi}/bin/rofi -show drun";
 				"${modifier}+0" = "workspace number 10";
 				"${modifier}+Shift+0" = "move container to workspace number 10";
 				"XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
