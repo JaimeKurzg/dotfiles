@@ -7,11 +7,11 @@
 	imports =
 		[ # Include the results of the hardware scan.
 			./hardware-configuration.nix
+			./modules/keymaps.nix
 			./modules/syncthing.nix
 			./modules/style.nix
 			./modules/nixld.nix
 			./modules/lmms.nix
-			inputs.xremap-flake.nixosModules.default
 			inputs.nixvim.nixosModules.nixvim
 		];
 	programs.dconf.enable = true;
@@ -66,31 +66,16 @@
     '';
     };
   };
-
   environment.etc."greetd/environments".text = ''
     sway
   '';
 	security.polkit.enable = true; # for sway
 
+
 # Configure keymap in X11
 	services.xserver = {
 		layout = "us";
 		xkbVariant = "";
-	};
-
-	services.xremap = {
-		userName = "jaimek";
-		config = {
-			keymap = [
-			{
-				name = "caps-esc replace";
-				remap = { 
-					"CapsLock" = "Esc";
-					"Esc" = "CapsLock";
-				};
-			}
-			];
-		};
 	};
 
 # Enable CUPS to print documents.

@@ -11,9 +11,6 @@ imports = [
 	./homeManagerModules/nvim.nix
 	./homeManagerModules/zsh.nix
 ];
-#	++ homeManagerModules;
-
-#nixpkgs.config.allowUnfree = true;
 
 home.username = "jaimek";
 home.homeDirectory = "/home/jaimek";
