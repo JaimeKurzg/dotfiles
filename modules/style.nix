@@ -1,9 +1,6 @@
 { pkgs, config, lib, ... }:
-
-let 
-#	mkColor = color : lib.strings.removePrefix "#" color ;
-in
 let
+font = (pkgs.nerdfonts.override { fonts = [ "OpenDyslexic" ]; });
 theme = ./themes/unikitty.yaml;
 #theme = { __raw = ''
 #	scheme: "Unikitty Dark"
@@ -31,18 +28,20 @@ in
 	stylix = {
 		image = wallpaper;
 		base16Scheme = theme;
+		targets.nixvim.enable = false;
+		
 		fonts = {
 			monospace = {
-				name = "OpenDyslexicMono-Regular";
-				package = pkgs.open-dyslexic;
+				name = "OpenDyslexicM Nerd Font Mono";
+				package = font;
 			};
 			sansSerif = {
-				name = "OpenDyslexic-Regular";
-				package = pkgs.open-dyslexic;
+				name = "OpenDyslexic Nerd Font";
+				package = font;
 			};
 			serif = {
-				name = "OpenDyslexic-Regular";
-				package = pkgs.open-dyslexic;
+				name = "OpenDyslexic Nerd Font";
+				package = font;
 			};
 			sizes = {
 				terminal = 11;
