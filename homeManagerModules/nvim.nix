@@ -34,8 +34,13 @@
 			updatetime = 50;
 		};
 
-		extraPlugins = [pkgs.vimPlugins.ccc-nvim];
+		extraPlugins = [
+			pkgs.vimPlugins.ccc-nvim
+			pkgs.vimPlugins.nvim-web-devicons
+			pkgs.vimPlugins.comment-nvim
+		];
 		plugins = {
+			which-key.enable = true;
 			oil = {
 				enable = true;
 				defaultFileExplorer = true;
@@ -51,10 +56,10 @@
 				useDefaultKeymaps = false;
 			};
 			treesitter = {
-				folding = true;
+				enable = true;
 				indent = true;
 				ensureInstalled = [
-					"tree-sitter-nix"
+					"nix"
 				];
 			};
 			lsp = {
@@ -86,6 +91,7 @@
 				enable = true;
 			};
 
+			trouble.enable = true;
 			fugitive.enable = true;
 			surround.enable = true;
 			tmux-navigator.enable = true;
@@ -133,8 +139,6 @@
 						desc = "[ ] Find existing buffers"; 
 					};
 				};
-
-
 			};
 		};
 
@@ -213,7 +217,7 @@
 		{
 			mode = "n";
 			key = "<leader>f";
-			action = "<cmd>lua vim.lsp.buf.format()";
+			action = "<cmd>lua vim.lsp.buf.format()<cr>";
 		}
 		{
 			mode = "n";
@@ -238,11 +242,7 @@
 
 # plugin keys
 		{
-			mode = "n";
-			key = "<leader>vpp";
-			action = "<cmd>Oil ~/.config/nvim/<CR>";
-		}
-		{
+			options.desc = "File System";
 			action = "<cmd>Oil<cr>";
 			key = "<leader>k";
 			mode = "n";
@@ -258,7 +258,5 @@
 
 		];
 	};
-#			nvim-web-devicons
-#			telescope-z-nvim
 }
 
