@@ -1,4 +1,4 @@
-{config, pkgs, ...}:
+{config, pkgs, lib, ...}:
 {
   programs.waybar.enable = true;
    
@@ -6,7 +6,7 @@
   mainBar = {
     layer = "top";
     position = "bottom";
-    height = 12;
+    height = 24;
     output = [
       "eDP-1"
     ];
@@ -42,8 +42,8 @@
     padding: 0;
     margin: 0;
 
-	font-family: OpenDyslexic-Regular;
-    font-size: 11px;
+	font-family: OpenDyslexicM;
+    font-size: 18px;
   }
 
   window#waybar {
