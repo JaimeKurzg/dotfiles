@@ -1,25 +1,30 @@
-{config, inputs, pkgs, lib, ...}:
+{config, inputs, pkgs, lib, system, ...}:
 let
-	left = "h";
-	down = "j";
-	up = "k";
-	right = "l";
+left = "h";
+down = "j";
+up = "k";
+right = "l";
 in {
 
-imports = [
+	imports = [
 
-	inputs.xremap-flake.nixosModules.default
+		inputs.xremap-flake.nixosModules.default
+	];
+
+	systemd.user.services.xremap.serviceConfig.Environment = [
+		"PATH=/etc/profiles/per-user/<USERNAME>/bin"
+	];
+
+environment.systemPackages = [
+	inputs.xremap-flake.packages.x86_64-linux.default
 ];
-
-  systemd.user.services.xremap.serviceConfig.Environment = [
-    "PATH=/etc/profiles/per-user/<USERNAME>/bin"
-  ];
 
 	services.xremap = {
 		enable = true;
 		withWlroots = true;
+		userName = "jaimek";
 		config = {
-			keymap = [
+			modmap = [
 			{
 				name = "caps-esc replace";
 				remap = { 
@@ -27,12 +32,16 @@ imports = [
 					"Esc" = "CapsLock";
 				};
 			}
-		  {
-  name = "apps";
-  remap.alt-f.launch = [ "${lib.getExe pkgs.pavucontrol}" "pavucontrol" ];
-
-}
-		];
+			];
+#			keymap = [
+#
+#			{
+#				name = "sound";
+#				remap.KEY_VOLUMEUP.launch = ["${pkgs.wireplumber}/bin/wpctl" "set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+"];
+#				remap.KEY_VOLUMEDOWN.launch = ["bash" "-c" "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%-"];
+#				remap.KEY_MUTE.launch = ["bash" "-c" "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"];
+#			}
+#			];
 		};
 	};
 }

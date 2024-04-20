@@ -40,6 +40,7 @@
 # arguments to home.nix
 						home-manager.extraSpecialArgs = {
 							inherit inputs;
+							inherit system;
 						};
 					}
 					stylix.nixosModules.stylix
