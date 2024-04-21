@@ -92,7 +92,6 @@
 		alsa.support32Bit = true;
 	};
 
-# Define a user account. Don't forget to set a password with ‘passwd’.
 	users.users.jaimek = {
 		isNormalUser = true;
 		description = "Jaime Kurzweg";
@@ -140,6 +139,7 @@ nix.settings = {
 		unstable.jujutsu
 
 		github-desktop
+		inkscape
 	];
 
 	programs.steam.enable = true;
