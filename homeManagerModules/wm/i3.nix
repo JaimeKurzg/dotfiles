@@ -1,15 +1,11 @@
 {pkgs, config, lib, ...}:
 
 {
-	imports = [
-		./waybar.nix
-	];
-	wayland.windowManager.sway = {
+	xsession.windowManager.i3 = {
 		enable = true;
-		swaynag.enable = false;
 		config = {
-			bars = [ {command = "${pkgs.waybar}/bin/waybar";
-			}];
+	#		bars = [ {command = "${pkgs.i3blocks}/bin/i3blocks";
+	#		}];
 			window.border = 0;
 			window.titlebar = false;
 			workspaceAutoBackAndForth = true;
@@ -41,18 +37,14 @@
 
 
 			for_window [class="Booligrams"] floating enable
-			input 2362:14408:PIXA3848:01_093A:3848_Touchpad {
-				click_method clickfinger
-				middle_emulation enabled
-			}
+#			input 2362:14408:PIXA3848:01_093A:3848_Touchpad {
+#				click_method clickfinger
+#				middle_emulation enabled
+#			}
 			'';
 	};
 
 	home.packages = with pkgs; [
 		brightnessctl
-		grim # screenshot functionality
-		slurp # screenshot functionality
-		wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
-		mako # notification system developed by swaywm maintainer
 	];
 }

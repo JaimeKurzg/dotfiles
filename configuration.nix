@@ -54,29 +54,53 @@
 
 # Enable the X11 windowing system.
 #	services.xserver.enable = true;
-  services.greetd = {
-    enable = true;
-    settings = {
-     default_session.command = ''
-      ${pkgs.greetd.tuigreet}/bin/tuigreet \
-        --time \
-        --asterisks \
-        --user-menu \
-        --cmd sway
-    '';
-    };
-  };
-  environment.etc."greetd/environments".text = ''
-    sway
-  '';
-	security.polkit.enable = true; # for sway
-
+ # services.greetd = {
+ #   enable = true;
+ #   settings = {
+ #    default_session.command = ''
+ #     ${pkgs.greetd.tuigreet}/bin/tuigreet \
+ #       --time \
+ #       --asterisks \
+ #       --user-menu \
+ #       --cmd sway
+ #   '';
+ #   };
+ # };
+ # environment.etc."greetd/environments".text = ''
+ #   i3
+ #   sway
+ # '';
 
 # Configure keymap in X11
 	services.xserver = {
 		layout = "us";
 		xkbVariant = "";
 	};
+
+	
+	environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw 
+
+  services.xserver = {
+    enable = true;
+
+    desktopManager = {
+      xterm.enable = false;
+    };
+   
+    displayManager = {
+        defaultSession = "none+i3";
+    };
+
+    windowManager.i3 = {
+      enable = true;
+      extraPackages = with pkgs; [
+        dmenu #application launcher most people use
+        i3status # gives you the default i3 status bar
+        i3lock #default i3 screen locker
+        i3blocks #if you are planning on using i3blocks over i3status
+     ];
+    };
+  };
 
 # Enable CUPS to print documents.
 	services.printing.enable = true;
