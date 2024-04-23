@@ -12,11 +12,8 @@
 			modifier = "Mod1";
 			terminal = "kitty"; 
 
-			startup = [
-				{command = ''swaymsg "workspace 3; exec qutebrowser"'';}
-			];
 			keybindings = let
-				modifier = config.wayland.windowManager.sway.config.modifier;
+				modifier = "Mod1";
 				mod2 = "Mod4";
 			in lib.mkOptionDefault {
 				"${modifier}+t" = "exec ${pkgs.kitty}/bin/kitty";
@@ -28,14 +25,12 @@
 				"${modifier}+w" = "workspace --no-auto-back-and-forth number 10; exec kitty -e spotify_player";
 				"XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
 				"XF86MonBrightnessUp" = "exec brightnessctl set 5%+";
+			"XF86AudioRaiseVolume" = "exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+";
+			"XF86AudioLowerVolume" = "exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%-";
+			"XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
 			};
 		};
 		extraConfig = ''
-			bindsym XF86AudioRaiseVolume exec 'wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+'
-			bindsym XF86AudioLowerVolume exec 'wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%-'
-			bindsym XF86AudioMute exec 'wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle'
-
-
 			for_window [class="Booligrams"] floating enable
 #			input 2362:14408:PIXA3848:01_093A:3848_Touchpad {
 #				click_method clickfinger
