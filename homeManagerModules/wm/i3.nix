@@ -1,17 +1,27 @@
 {pkgs, config, lib, ...}:
 
 {
+	imports = [
+		./polybar.nix
+	];
+
 	xsession.windowManager.i3 = {
 		enable = true;
 		config = {
-	#		bars = [ {command = "${pkgs.i3blocks}/bin/i3blocks";
-	#		}];
 			window.border = 0;
 			window.titlebar = false;
 			workspaceAutoBackAndForth = true;
 			modifier = "Mod1";
 			terminal = "kitty"; 
+			bars = [ ];
+			startup = [
+			{
+				command = "systemctl --user restart polybar.service";
+				always = true;
+				notification = false;
+			}
 
+			];
 			keybindings = let
 				modifier = "Mod1";
 				mod2 = "Mod4";
