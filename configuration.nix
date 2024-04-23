@@ -178,15 +178,6 @@ nix.settings = {
 	programs.zsh.enable = true;
 	users.defaultUserShell = pkgs.zsh;
 
-	services.spotifyd = {
-		enable = true;
-		settings.global = {
-			username = "jkurzweg10@gmail.com";
-			password_cmd = "pass spotify";
-			device_name = "spotifyd";
-		};
-
-	};
 
 # Some programs need SUID wrappers, can be configured further or are
 # started in user sessions.

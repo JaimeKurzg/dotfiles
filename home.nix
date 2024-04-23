@@ -3,7 +3,6 @@
 {
 imports = [
 	inputs.nixvim.homeManagerModules.nixvim
-	inputs.sops-nix.homeManagerModules.sops
 	./homeManagerModules/wm/i3.nix
 	./homeManagerModules/spotify/spotify.nix
 	./homeManagerModules/youtube.nix

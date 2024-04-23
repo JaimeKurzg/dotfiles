@@ -1,4 +1,9 @@
-{pkgs, config, ...} : {
+{pkgs, config, inputs, ...} : {
+	imports = [
+		inputs.sops-nix.homeManagerModules.sops
+	];
+
+
 	home.packages = with pkgs; [
 		spotify-player
 	];
@@ -34,7 +39,9 @@
 		settings.global = {
 			username = "jkurzweg10@gmail.com";
 			password_cmd = "cat ${config.sops.secrets.spotify.path}";
+			device_name = "spotifyd";
 		};
 	};
+
 	sops.secrets.spotify = {};
 }
