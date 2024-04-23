@@ -1,8 +1,4 @@
 {pkgs, config, inputs, ...} : {
-	imports = [
-		inputs.sops-nix.homeManagerModules.sops
-	];
-
 
 	home.packages = with pkgs; [
 		spotify-player
@@ -33,15 +29,4 @@
 		bright_cyan = "#${config.lib.stylix.colors.base0E}"
 		bright_white = "#${config.lib.stylix.colors.base0F}"
 	'';
-
-	services.spotifyd = {
-		enable = true;
-		settings.global = {
-			username = "jkurzweg10@gmail.com";
-			password_cmd = "cat ${config.sops.secrets.spotify.path}";
-			device_name = "spotifyd";
-		};
-	};
-
-	sops.secrets.spotify = {};
 }

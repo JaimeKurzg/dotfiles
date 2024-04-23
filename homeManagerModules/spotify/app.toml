@@ -1,5 +1,5 @@
 theme = "stylix"
-client_id = "65b708073fc0480ea92a077233ca87bd"
+client_id = "3c64b31dddb4429bb9f1deaf574db14b"
 client_port = 8080
 playback_format = """
 {track} • {artists}
@@ -24,7 +24,7 @@ enable_notify = false
 enable_media_control = false
 enable_streaming = "Always"
 enable_cover_image_cache = true
-default_device = "spotify-player"
+default_device = "nixos"
 
 [copy_command]
 command = "xclip"
@@ -34,7 +34,7 @@ args = [
 ]
 
 [device]
-name = "spotify-player"
+name = "nixos"
 device_type = "speaker"
 volume = 70
 bitrate = 320
