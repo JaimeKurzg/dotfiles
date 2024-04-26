@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, unstable, ... }:
 
 {
 	home.packages = with pkgs; [
@@ -12,8 +12,25 @@
 			bat
 	];
 
+	services.picom = {
+		enable = true;
+		package = unstable.picom;
+		backend = "glx";
+		settings = {
+			blur =
+			{ 
+				method = "dual_kawase";
+				size = 10;
+				deviation = 5.0;
+			};
+
+		};
+	};
 	programs.kitty = {
 		enable = true;
+		settings = lib.mkForce {
+			background_opacity = "0.7";
+		};
 	};
 
 	programs.zoxide = {

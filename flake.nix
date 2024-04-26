@@ -45,6 +45,7 @@
 				extraSpecialArgs = {
 					inherit inputs;
 					inherit system;
+					inherit unstable;
 				};
 			};
 		};
