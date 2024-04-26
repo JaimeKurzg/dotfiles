@@ -9,7 +9,6 @@
 			./hardware-configuration.nix
 			./modules/keymaps.nix
 			./modules/syncthing.nix
-			./modules/style.nix
 			./modules/nixld.nix
 			./modules/lmms.nix
 			inputs.nixvim.nixosModules.nixvim
@@ -110,7 +109,7 @@
 	hardware.pulseaudio.enable = false;
 	security.rtkit.enable = true;
 	services.pipewire = {
-		enable = true;
+	enable = true;
 		pulse.enable = true;
 		alsa.enable = true;
 		alsa.support32Bit = true;
@@ -140,6 +139,8 @@ nix.settings = {
 # List packages installed in system profile. To search, run:
 # $ nix search wget
 	environment.systemPackages = with pkgs; [
+		
+		neovim
 		kitty
 		pulseaudioFull # allows for increase and decrease sound
 		playerctl

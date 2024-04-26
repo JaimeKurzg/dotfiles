@@ -3,6 +3,7 @@
 {
 imports = [
 	inputs.sops-nix.homeManagerModules.sops
+	./modules/style.nix
 	./homeManagerModules/wm/i3.nix
 	./homeManagerModules/spotify/spotify.nix
 	./homeManagerModules/youtube.nix

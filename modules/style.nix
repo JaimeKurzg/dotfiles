@@ -25,28 +25,28 @@ theme = ./themes/unikitty.yaml;
 wallpaper = ./.wallpaper.png;
 in 
 {
-	stylix = {
-		image = wallpaper;
-		base16Scheme = theme;
-		targets.nixvim.enable = false;
-		
-		fonts = {
-			monospace = {
-				name = "OpenDyslexicM Nerd Font Mono";
-				package = font;
-			};
-			sansSerif = {
-				name = "OpenDyslexic Nerd Font";
-				package = font;
-			};
-			serif = {
-				name = "OpenDyslexic Nerd Font";
-				package = font;
-			};
-			sizes = {
-				terminal = 11;
-				applications = 11;
-			};
+stylix = {
+	image = wallpaper;
+	base16Scheme = theme;
+	targets.i3.enable = false;
+
+	fonts = {
+		monospace = {
+			name = "OpenDyslexicM Nerd Font Mono";
+			package = font;
+		};
+		sansSerif = {
+			name = "OpenDyslexic Nerd Font";
+			package = font;
+		};
+		serif = {
+			name = "OpenDyslexic Nerd Font";
+			package = font;
+		};
+		sizes = {
+			terminal = 11;
+			applications = 11;
 		};
 	};
+};
 }

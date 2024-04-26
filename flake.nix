@@ -8,6 +8,7 @@
 		home-manager.url = "github:nix-community/home-manager/release-23.11";
 		home-manager.inputs.nixpkgs.follows = "nixpkgs";
 		stylix.url = "github:danth/stylix/release-23.11";
+		stylix.inputs.nixpkgs.follows = "nixpkgs";
 		xremap-flake.url = "github:xremap/nix-flake";
 		nixvim = {
 			url = "github:nix-community/nixvim/nixos-23.11";
@@ -15,7 +16,7 @@
 		};
 	};
 
-	outputs = { self, nixpkgs, home-manager, nixpkgs-unstable, stylix, ... }@inputs:
+	outputs = { self, nixpkgs, home-manager, nixpkgs-unstable, ... }@inputs:
 	let 
 		lib = nixpkgs.lib;
 		unstable = nixpkgs-unstable.legacyPackages.${system};
@@ -23,29 +24,28 @@
 		pkgs = nixpkgs.legacyPackages.${system};
 	in {
 		nixosConfigurations = {
-			nixos = nixpkgs.lib.nixosSystem {
+			nixos = lib.nixosSystem {
 				inherit system;
+				modules = [
+					./configuration.nix 
+				];
 				specialArgs = { 
 					inherit inputs; 
 					inherit unstable;
 				};
-				modules = [
-					./configuration.nix 
-					home-manager.nixosModules.home-manager
-					{
-						home-manager.useGlobalPkgs = true;
-						home-manager.useUserPackages = true;
-						home-manager.users.jaimek = import ./home.nix;
-# Optionally, use home-manager.extraSpecialArgs to pass
-# arguments to home.nix
-						home-manager.extraSpecialArgs = {
-							inherit inputs;
-							inherit system;
-						};
-					}
-					stylix.nixosModules.stylix
-
+			};
+		};
+		homeConfigurations = {
+			jaimek = home-manager.lib.homeManagerConfiguration {
+				inherit pkgs;
+				modules = [ 
+					./home.nix 
+					inputs.stylix.homeManagerModules.stylix
 				];
+				extraSpecialArgs = {
+					inherit inputs;
+					inherit system;
+				};
 			};
 		};
 	};
