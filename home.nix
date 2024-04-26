@@ -3,7 +3,7 @@
 {
 imports = [
 	inputs.sops-nix.homeManagerModules.sops
-	./modules/style.nix
+	./homeManagerModules/style.nix
 	./homeManagerModules/wm/i3.nix
 	./homeManagerModules/spotify/spotify.nix
 	./homeManagerModules/youtube.nix
@@ -19,10 +19,6 @@ home.homeDirectory = "/home/jaimek";
 # want to update the value, then make sure to first check the Home Manager
 # release notes.
 home.stateVersion = "23.11"; # Please read the comment before changing.
-
-home.packages = with pkgs; [
-	(callPackage ./derivations/goost.nix {})
-];
 
 # Home Manager is pretty good at managing dotfiles. The primary way to manage
 # plain files is through 'home.file'.
