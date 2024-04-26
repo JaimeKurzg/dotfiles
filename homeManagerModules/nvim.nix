@@ -24,6 +24,25 @@
 			mapleader = " ";
 		};
 
+		extraConfigLua = ''
+			local prev_file_mark = false
+			vim.keymap.set("n", "<leader>k", function()
+				if prev_file_mark then
+					prev_file_mark = false
+					vim.cmd([[
+						normal! 'F
+					]])
+				else
+					vim.cmd('Oil')
+				end
+			end)
+			vim.keymap.set("n", "<leader>j", function()
+				prev_file_mark = true
+				vim.cmd([[
+					normal! mFgf
+				]])
+			end)
+		'';
 		options = {
 			mouse = "";
 			nu = true;
@@ -159,8 +178,8 @@
 
 		keymaps = [
 		{
-			mode = "n";
 			key = ";";
+			mode = "n";
 			action = ":";
 		}
 		{
@@ -253,14 +272,7 @@
 		{ mode = "n"; key = "<leader>cc"; action = "<cmd>CccPick<cr>"; }
 
 
-
 # plugin keys
-		{
-			options.desc = "File System";
-			action = "<cmd>Oil<cr>";
-			key = "<leader>k";
-			mode = "n";
-		}
 		{
 			key = "S";
 			action = ''<cmd>lua require("flash").treesitter()<CR>'';
