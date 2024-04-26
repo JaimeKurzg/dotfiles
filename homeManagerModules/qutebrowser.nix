@@ -11,10 +11,10 @@
 				fonts.web.size.default = lib.mkForce (14);
 			};
 			extraConfig = ''
-				config.load_autoconfig(False)
-				c.input.mode_override = "normal"
-				c.content.javascript.enabled = True
-				c.content.javascript.clipboard = "access"
+config.load_autoconfig(False)
+c.input.mode_override = "normal"
+c.content.javascript.enabled = True
+c.content.javascript.clipboard = "access"
 				'';
 			keyBindings = {
 				normal = {
