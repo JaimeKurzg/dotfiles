@@ -116,11 +116,13 @@ nix.settings = {
     trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
   };
 
+environment.sessionVariables = {
+	FLAKE = "/home/jaimek/.dotfiles";
+};
 
 # List packages installed in system profile. To search, run:
 # $ nix search wget
 	environment.systemPackages = with pkgs; [
-		
 		neovim
 		kitty
 		pulseaudioFull # allows for increase and decrease sound
@@ -146,6 +148,8 @@ nix.settings = {
 
 		github-desktop
 		inkscape
+
+		unstable.nh
 	];
 
 	programs.steam.enable = true;
