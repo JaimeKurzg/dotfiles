@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 # Created By @icanwalkonwater
 # Edited and ported to Nix by Th0rgal
@@ -165,8 +165,8 @@ in {
         type = "internal/battery";
         full-at = 99; # to disable it
         low-at = 5;
-        battery = "BAT0"; # TODO: Better way to fill this
-        adapter = "AC0";
+        battery = "BAT1"; # TODO: Better way to fill this
+        adapter = "ACAD";
 
         poll-interval = 2;
 
@@ -219,7 +219,7 @@ in {
 
         interval = "1.0";
 
-        time = "%H:%M:%S";
+        time = "%I:%M:%S";
         time-alt = "%Y-%m-%d%";
 
         format = "<label>";
