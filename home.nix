@@ -3,14 +3,10 @@
 {
 imports = [
 	inputs.sops-nix.homeManagerModules.sops
-	./homeManagerModules/style.nix
-	./homeManagerModules/wm/i3.nix
-	./homeManagerModules/spotify/spotify.nix
-	./homeManagerModules/youtube.nix
-	./homeManagerModules/qutebrowser.nix
-	./homeManagerModules/nvim.nix
-	./homeManagerModules/zsh.nix
+	./homeManagerModules
 ];
+
+globalstyle.enable = true;
 
 home.username = "jaimek";
 home.homeDirectory = "/home/jaimek";

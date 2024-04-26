@@ -1,9 +1,15 @@
-{config, inputs, pkgs, unstable, ...}:
+{config, lib, inputs, pkgs, unstable, ...}:
 {
+
 	imports = [
 		inputs.nixvim.homeManagerModules.nixvim
 	];
 
+	options = {
+		nvim.enable = 
+		lib.mkEnableOption "use my nvim conf";
+	};
+	config = lib.mkIf config.nvim.enable {
 	home.packages = with pkgs; [
 		ripgrep
 	];
@@ -265,6 +271,7 @@
 		}
 
 		];
+	};
 	};
 }
 

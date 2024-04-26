@@ -7,11 +7,7 @@
 	imports =
 		[ # Include the results of the hardware scan.
 			./hardware-configuration.nix
-			./modules/keymaps.nix
-			./modules/syncthing.nix
-			./modules/nixld.nix
-			./modules/lmms.nix
-			inputs.nixvim.nixosModules.nixvim
+			./nixosModules
 		];
 	programs.dconf.enable = true;
 

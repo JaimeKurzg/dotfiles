@@ -1,4 +1,5 @@
 { pkgs, config, lib, ... }:
+
 let
 font = (pkgs.nerdfonts.override { fonts = [ "OpenDyslexic" ]; });
 theme = ./themes/unikitty.yaml;
@@ -25,28 +26,33 @@ theme = ./themes/unikitty.yaml;
 wallpaper = ./.wallpaper.png;
 in 
 {
-stylix = {
-	image = wallpaper;
-	base16Scheme = theme;
-	targets.i3.enable = false;
+	options = {
+		globalstyle.enable = lib.mkEnableOption "enables stylix";
+	};
+	config = lib.mkIf config.globalstyle.enable {
+		stylix = {
+			image = wallpaper;
+			base16Scheme = theme;
+			targets.i3.enable = false;
 
-	fonts = {
-		monospace = {
-			name = "OpenDyslexicM Nerd Font Mono";
-			package = font;
-		};
-		sansSerif = {
-			name = "OpenDyslexic Nerd Font";
-			package = font;
-		};
-		serif = {
-			name = "OpenDyslexic Nerd Font";
-			package = font;
-		};
-		sizes = {
-			terminal = 11;
-			applications = 11;
+			fonts = {
+				monospace = {
+					name = "OpenDyslexicM Nerd Font Mono";
+					package = font;
+				};
+				sansSerif = {
+					name = "OpenDyslexic Nerd Font";
+					package = font;
+				};
+				serif = {
+					name = "OpenDyslexic Nerd Font";
+					package = font;
+				};
+				sizes = {
+					terminal = 11;
+					applications = 11;
+				};
+			};
 		};
 	};
-};
 }
