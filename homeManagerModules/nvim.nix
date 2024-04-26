@@ -1,5 +1,9 @@
-{config, pkgs, ...}:
+{config, inputs, pkgs, unstable, ...}:
 {
+	imports = [
+		inputs.nixvim.homeManagerModules.nixvim
+	];
+
 	home.packages = with pkgs; [
 		ripgrep
 	];
@@ -34,10 +38,14 @@
 			updatetime = 50;
 		};
 
-		extraPlugins = [
+		extraPlugins = with pkgs.vimPlugins; [
+
 			pkgs.vimPlugins.ccc-nvim
 			pkgs.vimPlugins.nvim-web-devicons
-			pkgs.vimPlugins.comment-nvim
+			{
+				plugin = pkgs.vimPlugins.comment-nvim;
+				config = ''lua require'Comment'.setup()'';
+			}
 		];
 		plugins = {
 			which-key.enable = true;
