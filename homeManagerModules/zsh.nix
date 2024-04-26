@@ -64,8 +64,8 @@
 			unbind '"'
 			unbind %
 
-# reload config file (change file location to your the tmux.conf you want to use)
-			bind r source-file ~/.tmux.conf
+			set status off
+
 			'';
 		plugins = 
 			with pkgs.tmuxPlugins; [
@@ -82,7 +82,6 @@
 					set -g @continuum-save-interval '60' # minutes
 					'';
 			}
-			onedark-theme
 			jump
 			fingers
 			];
