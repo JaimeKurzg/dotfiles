@@ -12,6 +12,8 @@
 		extraConfig = ''
 config.load_autoconfig(False)
 c.input.mode_override = "normal"
+c.content.javascript.enabled = True
+c.content.javascript.clipboard = "access"
 		'';
 		keyBindings = {
 			normal = {
