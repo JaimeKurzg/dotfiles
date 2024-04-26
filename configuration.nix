@@ -51,25 +51,6 @@
 		LC_TIME = "en_US.UTF-8";
 	};
 
-# Enable the X11 windowing system.
-#	services.xserver.enable = true;
- # services.greetd = {
- #   enable = true;
- #   settings = {
- #    default_session.command = ''
- #     ${pkgs.greetd.tuigreet}/bin/tuigreet \
- #       --time \
- #       --asterisks \
- #       --user-menu \
- #       --cmd sway
- #   '';
- #   };
- # };
- # environment.etc."greetd/environments".text = ''
- #   i3
- #   sway
- # '';
-
 # Configure keymap in X11
 	services.xserver = {
 		layout = "us";
