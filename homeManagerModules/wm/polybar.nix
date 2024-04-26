@@ -4,6 +4,8 @@
 # Edited and ported to Nix by Th0rgal
 
 let
+	
+	font = (pkgs.nerdfonts.override { fonts = [ "OpenDyslexic" ]; });
   ac = "#1E88E5";
   mf = "#383838";
 
@@ -63,8 +65,8 @@ in {
 
         radius = 0;
 
-        font-0 = "FuraCode Nerd Font:size=12;3";
-        font-1 = "FuraCode Nerd Font:style=Bold:size=12;3";
+        font-0 = "OpenDyslexic Nerd Font:size=12;3";
+        font-1 = "OpenDyslexic Nerd Font:style=Bold:size=12;3";
 
         modules-left = "distro-icon dulS ddrT i3 dulT";
         modules-center = "title";
@@ -97,8 +99,8 @@ in {
         tray-scale = 1;
         padding = 0;
 
-        font-0 = "FuraCode Nerd Font:size=12;3";
-        font-1 = "FuraCode Nerd Font:style=Bold:size=12;3";
+        font-0 = "OpenDyslexic Nerd Font:size=12;3";
+        font-1 = "OpenDyslexic Nerd Font:style=Bold:size=12;3";
 
         modules-left = "powermenu ddlS";
 
@@ -270,7 +272,7 @@ in {
       "module/title" = {
         type = "internal/xwindow";
         format = "<label>";
-        format-foreground = secondary;
+        format-foreground = fg;
         label = "%title%";
         label-maxlen = 70;
       };
