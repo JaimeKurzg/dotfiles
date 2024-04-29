@@ -14,6 +14,7 @@
 # Bootloader.
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true;
+	virtualisation.libvirtd.enable = true;
 
 	boot.initrd.luks.devices."luks-2409d42b-f61b-4c96-9bb3-a57d088c653e".device = "/dev/disk/by-uuid/2409d42b-f61b-4c96-9bb3-a57d088c653e";
 	networking.hostName = "nixos"; # Define your hostname.
