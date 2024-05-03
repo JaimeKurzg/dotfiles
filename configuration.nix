@@ -147,6 +147,7 @@ environment.sessionVariables = {
 		inkscape
 
 		unstable.nh
+		cinnamon.nemo
 	];
 
 	programs.steam.enable = true;

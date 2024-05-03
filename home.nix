@@ -6,6 +6,11 @@ imports = [
 	./homeManagerModules
 ];
 
+home.packages = with pkgs; [
+	cinnamon.nemo
+	gnome.zenity
+];
+
 globalstyle.enable = true;
 
 home.username = "jaimek";
@@ -45,6 +50,20 @@ sops = {
 	age.keyFile = "/home/jaimek/.config/sops/age/keys.txt";
 	defaultSymlinkPath = "/run/user/1000/secrets";
     defaultSecretsMountPoint = "/run/user/1000/secrets.d";
+};
+
+xdg.mimeApps = {
+  enable = true;
+  
+  defaultApplications = {
+    "text/html" = "org.qutebrowser.qutebrowser.desktop";
+    "x-scheme-handler/http" = "org.qutebrowser.qutebrowser.desktop";
+    "x-scheme-handler/https" = "org.qutebrowser.qutebrowser.desktop";
+    "x-scheme-handler/about" = "org.qutebrowser.qutebrowser.desktop";
+    "x-scheme-handler/unknown" = "org.qutebrowser.qutebrowser.desktop";
+	"inode/directory" = "nemo.desktop";
+	"inode/file" = "nemo.desktop";
+	};
 };
 
 # Let Home Manager install and manage itself.
