@@ -34,6 +34,14 @@
 					inherit unstable;
 				};
 			};
+			isoimage = lib.nixosSystem {
+				inherit system;
+				specialArgs = { 
+					inherit inputs;
+				};
+				modules = [ ./hosts/isoimage/configuration.nix ];
+
+			};
 		};
 		homeConfigurations = {
 			jaimek = home-manager.lib.homeManagerConfiguration {

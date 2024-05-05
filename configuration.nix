@@ -148,6 +148,7 @@ environment.sessionVariables = {
 
 		unstable.nh
 		cinnamon.nemo
+		gnome.gnome-boxes
 	];
 
 	programs.steam.enable = true;
