@@ -23,6 +23,23 @@
 		globals = {
 			mapleader = " ";
 		};
+		extraFiles = {
+			"after/ftplugin/gdscript.lua" = ''
+				local port = os.getenv('GDScript_Port') or '6005'
+				local cmd = vim.lsp.rpc.connect('127.0.0.1', port)
+				local pipe = '/tmp/godot.pipe'
+
+				vim.lsp.start({
+						name = 'Godot',
+						cmd = cmd,
+						root_dir = vim.fs.dirname(vim.fs.find({ 'project.godot', '.git' }, { upward = true })[1]),
+						on_attach = function(client, bufnr)
+						vim.api.nvim_command('echo serverstart("' .. pipe .. '")')
+						end
+						})
+
+			'';
+		};
 
 		extraConfigLua = ''
 			local prev_file_mark = false
@@ -42,6 +59,7 @@
 					normal! mFgf
 				]])
 			end)
+
 		'';
 		options = {
 			mouse = "";
@@ -64,13 +82,13 @@
 		};
 
 		extraPlugins = with pkgs.vimPlugins; [
-
-			pkgs.vimPlugins.ccc-nvim
-			pkgs.vimPlugins.nvim-web-devicons
+			ccc-nvim
+			nvim-web-devicons
 			{
-				plugin = pkgs.vimPlugins.comment-nvim;
+				plugin = comment-nvim;
 				config = ''lua require'Comment'.setup()'';
 			}
+
 		];
 		plugins = {
 			which-key.enable = true;
@@ -93,22 +111,25 @@
 				indent = true;
 				ensureInstalled = [
 					"nix"
+					"gdscript"
 				];
 			};
+
 			lsp = {
 				enable = true;
 				servers = {
 					nil_ls.enable = true;
+					gdscript.enable = true;
 				};
 			};
 			nvim-cmp = {
 				enable = true;
 				autoEnableSources = true;
 				sources = [
-					{name = "nvim_lsp";}
-					{name = "path";}
-					{name = "luasnip";}
-					{name = "buffer";}
+				{name = "nvim_lsp";}
+				{name = "path";}
+				{name = "luasnip";}
+				{name = "buffer";}
 				];
 				mapping = {
 					"<C-Space>" = "cmp.mapping.complete()";
