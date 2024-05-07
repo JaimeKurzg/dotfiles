@@ -9,6 +9,7 @@ imports = [
 home.packages = with pkgs; [
 	cinnamon.nemo
 	gnome.zenity
+	element-desktop
 ];
 
 globalstyle.enable = true;
