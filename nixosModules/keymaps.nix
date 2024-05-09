@@ -7,32 +7,36 @@ right = "l";
 in {
 
 	imports = [
-
 		inputs.xremap-flake.nixosModules.default
 	];
 
-	systemd.user.services.xremap.serviceConfig.Environment = [
-		"PATH=/etc/profiles/per-user/<USERNAME>/bin"
-	];
+	options = {
+		xremap.enable = lib.mkEnableOption "enable xremap";
+	};
 
-environment.systemPackages = [
-	inputs.xremap-flake.packages.x86_64-linux.default
-];
+	config = lib.mkIf config.xremap.enable {
+		systemd.user.services.xremap.serviceConfig.Environment = [
+			"PATH=/etc/profiles/per-user/<USERNAME>/bin"
+		];
 
-	services.xremap = {
-		enable = true;
-		withWlroots = true;
-		userName = "jaimek";
-		config = {
-			modmap = [
-			{
-				name = "caps-esc replace";
-				remap = { 
-					"CapsLock" = "Esc";
-					"Esc" = "CapsLock";
-				};
-			}
-			];
+		environment.systemPackages = [
+			inputs.xremap-flake.packages.x86_64-linux.default
+		];
+
+		services.xremap = {
+			enable = true;
+			withWlroots = true;
+			userName = "jaimek";
+			config = {
+				modmap = [
+				{
+					name = "caps-esc replace";
+					remap = { 
+						"CapsLock" = "Esc";
+						"Esc" = "CapsLock";
+					};
+				}
+				];
 #			keymap = [
 #
 #			{
@@ -42,6 +46,7 @@ environment.systemPackages = [
 #				remap.KEY_MUTE.launch = ["bash" "-c" "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"];
 #			}
 #			];
+			};
 		};
 	};
 }

@@ -24,10 +24,20 @@
 		pkgs = nixpkgs.legacyPackages.${system};
 	in {
 		nixosConfigurations = {
+			pc = lib.nixosSystem{
+				inherit system;
+				modules = [
+					./hosts/pc/configuration.nix
+				];
+				specialArgs = { 
+					inherit inputs; 
+					inherit unstable;
+				};
+			};
 			nixos = lib.nixosSystem {
 				inherit system;
 				modules = [
-					./configuration.nix 
+					./hosts/default/configuration.nix
 				];
 				specialArgs = { 
 					inherit inputs; 

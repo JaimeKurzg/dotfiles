@@ -3,7 +3,7 @@
 {
 imports = [
 	inputs.sops-nix.homeManagerModules.sops
-	./homeManagerModules
+	../../homeManagerModules
 ];
 
 home.packages = with pkgs; [
