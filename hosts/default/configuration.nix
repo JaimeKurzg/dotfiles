@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, unstable, inputs, ... }:
+{ config, pkgs, unstable, inputs, hostname, ... }:
 {
 	imports =
 		[ # Include the results of the hardware scan.
@@ -20,7 +20,7 @@
 	virtualisation.libvirtd.enable = true;
 
 	boot.initrd.luks.devices."luks-2409d42b-f61b-4c96-9bb3-a57d088c653e".device = "/dev/disk/by-uuid/2409d42b-f61b-4c96-9bb3-a57d088c653e";
-	networking.hostName = "nixos"; # Define your hostname.
+	networking.hostName = hostname; # Define your hostname.
 
 	networking.networkmanager.enable = true;
 

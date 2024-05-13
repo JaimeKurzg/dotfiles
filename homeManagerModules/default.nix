@@ -7,7 +7,7 @@
 		./qutebrowser.nix
 		./youtube.nix
 		./gameDev.nix
-		./wm/i3.nix
+		./wm/i3/i3.nix
 		./spotify/spotify.nix
 	];
 	youtube.enable = lib.mkDefault false;

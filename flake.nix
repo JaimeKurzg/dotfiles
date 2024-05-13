@@ -32,9 +32,10 @@
 				specialArgs = { 
 					inherit inputs; 
 					inherit unstable;
+					hostname = "pc";
 				};
 			};
-			nixos = lib.nixosSystem {
+			laptop = lib.nixosSystem {
 				inherit system;
 				modules = [
 					./hosts/default/configuration.nix
@@ -42,6 +43,7 @@
 				specialArgs = { 
 					inherit inputs; 
 					inherit unstable;
+					hostname = "laptop";
 				};
 			};
 			isoimage = lib.nixosSystem {
@@ -57,7 +59,7 @@
 			jaimek = home-manager.lib.homeManagerConfiguration {
 				inherit pkgs;
 				modules = [ 
-					./home.nix 
+					./hosts/default/home.nix
 					inputs.stylix.homeManagerModules.stylix
 				];
 				extraSpecialArgs = {
