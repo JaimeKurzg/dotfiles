@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, unstable, lib, ... }:
 
 {
 	options = {
@@ -7,12 +7,16 @@
 	config = lib.mkIf config.qutebrowser.enable {
 		programs.qutebrowser = {
 			enable = true;
+			package = unstable.qutebrowser;
 			settings = {
 				fonts.web.size.default = lib.mkForce (14);
 			};
 			extraConfig = ''
 config.load_autoconfig(False)
 c.input.mode_override = "normal"
+c.input.insert_mode.auto_load = True
+c.input.insert_mode.auto_enter = True
+c.input.insert_mode.auto_leave = True
 c.content.javascript.enabled = True
 c.content.javascript.clipboard = "access"
 				'';
