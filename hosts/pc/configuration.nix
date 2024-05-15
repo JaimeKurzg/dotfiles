@@ -2,36 +2,35 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ hostname, config, pkgs, ... }:
+{ hostname, unstable, config, pkgs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-	  ../../nixosModules/location.nix
-	  ../../nixosModules/sysadmin.nix
-	  ../../nixosModules/syncthing.nix
-	];
+	imports =
+		[
+		./hardware-configuration.nix
+			../../nixosModules/location.nix
+			../../nixosModules/sysadmin.nix
+			../../nixosModules/syncthing.nix
+			../../nixosModules/i3.nix
+		];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+	nixpkgs.config.allowUnfree = true;
 
-  networking.hostName = hostname; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+# Bootloader.
+	boot.loader.systemd-boot.enable = true;
+	boot.loader.efi.canTouchEfiVariables = true;
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+	networking.hostName = hostname; # Define your hostname.
+# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  networking.networkmanager.enable = true;
+# Configure network proxy if necessary
+# networking.proxy.default = "http://user:password@proxy:port/";
+# networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+		networking.networkmanager.enable = true;
 
-  programs.firefox.enable = true;
+	programs.firefox.enable = true;
 
-  system.stateVersion = "23.11"; 
+	system.stateVersion = "23.11"; 
 
 }

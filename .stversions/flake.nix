@@ -38,7 +38,7 @@
 			laptop = lib.nixosSystem {
 				inherit system;
 				modules = [
-					./hosts/laptop/configuration.nix
+					./hosts/default/configuration.nix
 				];
 				specialArgs = { 
 					inherit inputs; 
@@ -59,7 +59,7 @@
 			jaimek = home-manager.lib.homeManagerConfiguration {
 				inherit pkgs;
 				modules = [ 
-					./hosts/laptop/home.nix
+					./hosts/default/home.nix
 					inputs.stylix.homeManagerModules.stylix
 				];
 				extraSpecialArgs = {
