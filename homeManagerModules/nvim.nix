@@ -91,6 +91,21 @@
 
 		];
 		plugins = {
+			dap = {
+				enable = true;
+				extensions.dap-ui.enable = true;
+				adapters.servers.godot = {
+					port = 6006;
+					host = "127.0.0.1";
+				};
+				configurations.gdscript = [ {
+					type = "godot";
+					request = "launch";
+					name = "Launch Scene";
+					port = 6006;
+					project = "\${workspaceFolder}";
+				} ];
+			};
 			which-key.enable = true;
 			oil = {
 				enable = true;
@@ -198,6 +213,51 @@
 
 
 		keymaps = [
+		{
+			key = "<leader>db";
+			action = "<cmd>lua require'dap'.toggle_breakpoint()<cr>";
+			mode = "n";
+		}
+		{
+			key = "<leader>dc";
+			action = "function() 
+				require'dap'.continue()
+				require'dapui'.open()
+			end
+			";
+			mode = "n";
+			lua = true;
+		}
+		{
+			key = "<leader>dq";
+			action = "function() 
+				require'dap'.terminate()
+				require'dapui'.close()
+			end
+			";
+			mode = "n";
+			lua = true;
+		}
+		{
+			key = "<leader>do";
+			action = "<cmd>lua require'dap'.step_over()<cr>";
+			mode = "n";
+		}
+		{
+			key = "<leader>di";
+			action = "<cmd>lua require'dap'.step_into()<cr>";
+			mode = "n";
+		}
+		{
+			key = "<leader>dp";
+			action = "<cmd>lua require'dap'.step_out()<cr>";
+			mode = "n";
+		}
+		{
+			key = "<leader>dr";
+			action = "<cmd>lua require'dap'.restart()<cr>";
+			mode = "n";
+		}
 		{
 			key = ";";
 			mode = "n";

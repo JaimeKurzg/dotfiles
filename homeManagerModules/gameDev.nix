@@ -1,4 +1,4 @@
-{lib, pkgs, inputs, config, ...}:
+{lib, pkgs, unstable, inputs, config, ...}:
 {
 	options = {
 		gameDev.enable = 
@@ -6,7 +6,7 @@
 	};
 	config = lib.mkIf config.gameDev.enable {
 		home.packages = with pkgs; [
-			godot_4
+			(pkgs.callPackage ./godot.nix {})
 			(import ./shScripts/nvim-godot.nix { inherit pkgs; })
 		];
 

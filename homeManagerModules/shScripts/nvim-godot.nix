@@ -2,7 +2,7 @@
 
 pkgs.writeShellApplication {
 	name = "godot-nvim";
-	runtimeInputs = [ pkgs.kitty pkgs.wmctrl ];
+	runtimeInputs = [ pkgs.kitty pkgs.wmctrl pkgs.neovim ];
 	text = ''
 		file=''$1
 		project=''$2
