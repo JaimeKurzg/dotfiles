@@ -1,7 +1,8 @@
-{pkgs, config, inputs, ...} : {
+{pkgs, unstable, config, inputs, ...} : {
+
 
 	home.packages = with pkgs; [
-		spotify-player
+		unstable.spotify-player
 	];
 
 	xdg.configFile."spotify-player/app.toml".source = ./app.toml;
