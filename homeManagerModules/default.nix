@@ -1,14 +1,14 @@
-{lib, config, ...}:
+{lib, ...}:
 {
 	imports = [
 		./zsh.nix
-		./nvim.nix
 		./style.nix
 		./qutebrowser.nix
 		./youtube.nix
 		./gameDev.nix
 		./wm/i3/i3.nix
 		./spotify/spotify.nix
+		./nvim
 	];
 	youtube.enable = lib.mkDefault false;
 	nvim.enable = lib.mkDefault true;

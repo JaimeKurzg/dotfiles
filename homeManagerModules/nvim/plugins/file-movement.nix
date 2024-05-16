@@ -1,0 +1,36 @@
+{
+	plugins.oil = {
+		enable = true;
+		defaultFileExplorer = true;
+		keymaps = {
+			"<leader>\\" = "actions.select_split";
+			"<leader>r" = "actions.refresh";
+			"<Leader>k" = "actions.parent";
+			"<Leader>j" = "actions.select";
+			"<Leader>p" = "actions.preview";
+			"<Leader>." = "actions.toggle_hidden";
+			"<leader>cd" = "actions.cd";
+		};
+		useDefaultKeymaps = false;
+	};
+
+	extraConfigLua = ''
+		local prev_file_mark = false
+		vim.keymap.set("n", "<leader>k", function()
+				if prev_file_mark then
+				prev_file_mark = false
+				vim.cmd([[
+					normal! 'F
+				]])
+				else
+				vim.cmd('Oil')
+				end
+				end)
+		vim.keymap.set("n", "<leader>j", function()
+				prev_file_mark = true
+				vim.cmd([[
+					normal! mFgf
+				]])
+				end)
+		'';
+}
