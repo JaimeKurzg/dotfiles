@@ -14,22 +14,26 @@
 
 				  {...}:{
 				  imports = [
-					  ./plugins
-					  ./options.nix
-					  ./keymaps.nix
-					  ./godot-nvim.nix
+				  ./plugins
+				  ./options.nix
+				  ./keymaps.nix
+				  ./godot-nvim.nix
 				  ];
 				  config = {
-					  viAlias = true;
-					  vimAlias = true;
+				  colorschemes.base16 = {
+				  enable = true;
+				  colorscheme = "unikitty-dark";
+				  };
+				  viAlias = true;
+				  vimAlias = true;
 
-					  globals = {
-					  mapleader = " ";
-					  };
+				  globals = {
+				  mapleader = " ";
+				  };
 				  };
 
-				  };
-				  } )
+						};
+				} )
 
 		];
 	};
