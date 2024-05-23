@@ -1,30 +1,3 @@
-{config, inputs, pkgs, lib, system, ...}:
-let
-left = "h";
-down = "j";
-up = "k";
-right = "l";
-in {
-
-	imports = [
-		inputs.xremap-flake.nixosModules.default
-	];
-
-	options = {
-		xremap.enable = lib.mkEnableOption "enable xremap";
-	};
-
-	config = lib.mkIf config.xremap.enable {
-		systemd.user.services.xremap.serviceConfig.Environment = [
-			"PATH=/etc/profiles/per-user/<USERNAME>/bin"
-		];
-
-		environment.systemPackages = [
-			inputs.xremap-flake.packages.x86_64-linux.default
-		];
-
-		services.xremap = {
-		yamlConfig = ''
 modmap:
 - name: CapsChange
   remap:
@@ -51,7 +24,3 @@ keymap:
         Super-k: [g,g]
         Super-h: [Shift-Key_6]
         Super-l: [SHIFT-KEY_4]
-'';
-	};
-	};
-}

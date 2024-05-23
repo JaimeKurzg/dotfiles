@@ -2,6 +2,8 @@
 {
 	imports = [
 		./zsh.nix
+	#	./xremap-nvim.nix
+		./games.nix
 		./style.nix
 		./qutebrowser.nix
 		./youtube.nix

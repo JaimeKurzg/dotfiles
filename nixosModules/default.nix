@@ -3,7 +3,6 @@
 	imports = [
 		./lmms.nix
 		./nixld.nix
-		./keymaps.nix
 		./syncthing.nix
 		./keymaps.nix
 	];
