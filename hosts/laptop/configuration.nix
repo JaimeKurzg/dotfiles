@@ -48,11 +48,14 @@ nix.settings = {
 
 		unstable.nh
 		gnome.gnome-boxes
+		nixos-shell
 	];
+
+	hardware.uinput.enable = true;
+	users.groups.uinput.members = [ "jaimek" ];
+	users.groups.input.members = [ "jaimek" ];
 
 	programs.steam.enable = true;
 
-
 	system.stateVersion = "23.11"; # Did you read the comment?
-
 }
