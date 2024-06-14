@@ -19,12 +19,12 @@
 		nvim-cmp = {
 			enable = true;
 			autoEnableSources = true;
-			sources = [
-			{name = "nvim_lsp";}
-			{name = "path";}
-			{name = "luasnip";}
-			{name = "buffer";}
-			];
+			# sources = [
+			# {name = "nvim_lsp";}
+			# {name = "path";}
+			# {name = "luasnip";}
+			# {name = "buffer";}
+			# ];
 			mapping = {
 				"<C-Space>" = "cmp.mapping.complete()";
 				"<C-d>" = "cmp.mapping.scroll_docs(-4)";

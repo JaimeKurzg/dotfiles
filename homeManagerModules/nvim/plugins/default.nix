@@ -6,6 +6,7 @@
 	./file-movement.nix
 	./cmp-lsp-ts.nix
 	./color-picker.nix
+	./writer.nix
 ];
 	config = {
 		extraPlugins = with pkgs.vimPlugins; [
