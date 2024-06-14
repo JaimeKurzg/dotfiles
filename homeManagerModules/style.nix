@@ -23,7 +23,7 @@ theme = ./themes/unikitty.yaml;
 #		base0E: "${mkColor ''#bb60ea''}" 
 #		base0F: "${mkColor ''#c720ca''}" 
 #		''; };
-wallpaper = ./.wallpaper.png;
+wallpaper = ./wallpaper.png;
 in 
 {
 	options = {
