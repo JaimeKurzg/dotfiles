@@ -3,6 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, unstable, inputs, hostname, ... }:
+
 {
 	imports =
 		[ # Include the results of the hardware scan.
@@ -29,10 +30,13 @@
 	
 	environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw 
 
-nix.settings = {
-    substituters = ["https://nix-gaming.cachix.org"];
-    trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
-  };
+	hardware.bluetooth.enable = true;
+	services.blueman.enable = true;
+
+# nix.settings = {
+#     substituters = ["https://nix-gaming.cachix.org"];
+#     trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
+#   };
 
 # List packages installed in system profile. To search, run:
 # $ nix search wget
@@ -50,6 +54,16 @@ nix.settings = {
 		gnome.gnome-boxes
 		nixos-shell
 	];
+	boot.kernelParams = [ "psmouse.synaptics_intertouch=0" ];
+	services.libinput = {
+		enable = true;
+		touchpad = {
+			clickMethod = "clickfinger";
+			tapping = true;
+			tappingDragLock = false;
+			tappingButtonMap = "lrm";
+		};
+	};
 
 	hardware.uinput.enable = true;
 	users.groups.uinput.members = [ "jaimek" ];

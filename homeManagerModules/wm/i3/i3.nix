@@ -47,9 +47,8 @@
 				};
 			};
 			extraConfig = ''
-				for_window [class="Booligrams"] floating enable
 #			input 2362:14408:PIXA3848:01_093A:3848_Touchpad {
-#				click_method clickfinger
+#				click_method buttonareas
 #				middle_emulation enabled
 #			}
 				'';
