@@ -69,6 +69,8 @@
 	users.groups.uinput.members = [ "jaimek" ];
 	users.groups.input.members = [ "jaimek" ];
 
+	programs.evince.enable = true;
+
 	programs.steam.enable = true;
 
 	system.stateVersion = "23.11"; # Did you read the comment?

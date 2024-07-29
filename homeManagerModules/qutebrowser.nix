@@ -5,6 +5,10 @@
 		qutebrowser.enable = lib.mkEnableOption "enables qutebrowser";
 	};
 	config = lib.mkIf config.qutebrowser.enable {
+		nixpkgs.config.allowUnfree = true;
+		nixpkgs.overlays = [
+			(final: prev: { qutebrowser = prev.qutebrowser.override { enableWideVine = true; }; })
+		];
 		programs.qutebrowser = {
 			enable = true;
 			package = unstable.qutebrowser;
@@ -19,6 +23,7 @@ c.input.insert_mode.auto_enter = True
 c.input.insert_mode.auto_leave = True
 c.content.javascript.enabled = True
 c.content.javascript.clipboard = "access"
+c.content.pdfjs = True
 				'';
 			keyBindings = {
 				normal = {

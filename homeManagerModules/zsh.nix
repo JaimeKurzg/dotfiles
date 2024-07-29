@@ -65,6 +65,7 @@
 			shellAliases = {
 				"clip" = "xclip -selection clipboard";
 				"cat" = "bat";
+				"open" = "xdg-open";
 			};
 			initExtra = ''
 				bindkey -v '^?' backward-delete-char
