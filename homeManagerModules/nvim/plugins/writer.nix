@@ -5,7 +5,18 @@
 	{
 		mode = "n";
 		key = "<leader>w";
-		action = "<cmd>ZenMode<cr>";
+		action = { 
+		__raw = ''
+			function()
+				print('writers mode')
+				vim.opt.wrap = true
+				vim.keymap.set('n','j', 'gj')
+				vim.keymap.set('n','k', 'gk')
+				vim.cmd('ZenMode')
+				vim.opt.linebreak = true
+			end
+		''; 
+		};
 	}
 
 	];

@@ -88,5 +88,15 @@
 		key = "=a";
 		action = "mzgg=G'zzz";
 	}
+	{
+		mode = "i";
+		key = "<C-BS>";
+		action = "<C-o>dB<C-o>x";
+	}
+	{
+		mode = "n";
+		key = "<C-BS>";
+		action = "dBx";
+	}
 	];
 }
