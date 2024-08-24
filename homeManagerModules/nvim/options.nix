@@ -1,5 +1,5 @@
 {
-	config.options = {
+	config.opts = {
 		mouse = "";
 		nu = true;
 		relativenumber = true;

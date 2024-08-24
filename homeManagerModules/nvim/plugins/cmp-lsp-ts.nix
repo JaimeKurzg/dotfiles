@@ -16,7 +16,7 @@
 				gdscript.enable = true;
 			};
 		};
-		nvim-cmp = {
+		cmp = {
 			enable = true;
 			autoEnableSources = true;
 			# sources = [
@@ -25,7 +25,7 @@
 			# {name = "luasnip";}
 			# {name = "buffer";}
 			# ];
-			mapping = {
+			settings.mapping = {
 				"<C-Space>" = "cmp.mapping.complete()";
 				"<C-d>" = "cmp.mapping.scroll_docs(-4)";
 				"<C-e>" = "cmp.mapping.abort()";

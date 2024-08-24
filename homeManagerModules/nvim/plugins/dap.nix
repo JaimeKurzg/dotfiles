@@ -10,23 +10,21 @@
 		}
 		{
 			key = "<leader>dc";
-			action = "function() 
+			action.__raw = "function() 
 				require'dap'.continue()
 				require'dapui'.open()
 			end
 			";
 			mode = "n";
-			lua = true;
 		}
 		{
 			key = "<leader>dq";
-			action = "function() 
+			action.__raw = "function() 
 				require'dap'.terminate()
 				require'dapui'.close()
 			end
 			";
 			mode = "n";
-			lua = true;
 		}
 		{
 			key = "<leader>do";

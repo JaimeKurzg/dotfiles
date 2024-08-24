@@ -1,8 +1,8 @@
 {
 	plugins.oil = {
 		enable = true;
-		defaultFileExplorer = true;
-		keymaps = {
+		settings.defaultFileExplorer = true;
+		settings.keymaps = {
 			"<leader>\\" = "actions.select_split";
 			"<leader>r" = "actions.refresh";
 			"<Leader>k" = "actions.parent";
@@ -11,7 +11,7 @@
 			"<Leader>." = "actions.toggle_hidden";
 			"<leader>cd" = "actions.cd";
 		};
-		useDefaultKeymaps = false;
+		settings.useDefaultKeymaps = false;
 	};
 
 	extraConfigLua = ''
