@@ -34,6 +34,7 @@ in
 			image = wallpaper;
 			base16Scheme = theme;
 			targets.i3.enable = false;
+			targets.k9s.enable = false;
 
 			fonts = {
 				monospace = {
