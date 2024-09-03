@@ -10,10 +10,8 @@
 		stylix.url = "github:danth/stylix/release-23.11";
 		stylix.inputs.nixpkgs.follows = "nixpkgs";
 		xremap-flake.url = "github:xremap/nix-flake";
-		nixvim = {
-			url = "github:nix-community/nixvim";
-			inputs.nixpkgs.follows = "nixpkgs-unstable";
-			inputs.home-manager.follows = "home-manager";
+		mynixvim = {
+			url = "path:./homeManagerModules/nvim";
 		};
 	};
 
@@ -24,6 +22,9 @@
 		system = "x86_64-linux";
 		pkgs = nixpkgs.legacyPackages.${system};
 	in {
+		imports = [
+			./homeManagerModules/nvim/default.nix
+		];
 		nixosConfigurations = {
 			pc = lib.nixosSystem{
 				inherit system;
@@ -62,6 +63,7 @@
 				modules = [ 
 					./hosts/laptop/home.nix
 					inputs.stylix.homeManagerModules.stylix
+					inputs.mynixvim
 				];
 				extraSpecialArgs = {
 					inherit inputs;

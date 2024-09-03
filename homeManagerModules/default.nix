@@ -1,4 +1,4 @@
-{lib, ...}:
+{lib, pkgs, ...}:
 {
 	imports = [
 		./zsh.nix
@@ -10,10 +10,10 @@
 		./gameDev.nix
 		./wm/i3/i3.nix
 		./spotify/spotify.nix
-		./nvim
+		#./nvim
 	];
 	youtube.enable = lib.mkDefault false;
-	nvim.enable = lib.mkDefault true;
+	#nvim.enable = lib.mkDefault true;
 	zsh.enable = lib.mkDefault true;
 	i3.enable = lib.mkDefault true;
 	qutebrowser.enable = lib.mkDefault true;
