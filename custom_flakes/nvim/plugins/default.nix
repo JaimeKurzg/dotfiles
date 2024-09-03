@@ -7,6 +7,7 @@
 	./cmp-lsp-ts.nix
 	./color-picker.nix
 	./writer.nix
+	#./godot-nvim.nix
 ];
 	config = {
 		extraPlugins = with pkgs.vimPlugins; [

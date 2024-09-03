@@ -3,7 +3,6 @@
 		./plugins
 		./options.nix
 		./keymaps.nix
-		./godot-nvim.nix
 	];
 	config = {
 		colorschemes.base16 = {
