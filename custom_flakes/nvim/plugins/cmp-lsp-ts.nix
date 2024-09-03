@@ -2,8 +2,8 @@
 	plugins = {
 		treesitter = {
 			enable = true;
-			indent = true;
-			ensureInstalled = [
+			indent.enable = true;
+			ensure_installed = [
 				"nix"
 					"gdscript"
 			];
@@ -12,7 +12,7 @@
 		lsp = {
 			enable = true;
 			servers = {
-				nil_ls.enable = true;
+				nil-ls.enable = true;
 				gdscript.enable = true;
 			};
 		};
