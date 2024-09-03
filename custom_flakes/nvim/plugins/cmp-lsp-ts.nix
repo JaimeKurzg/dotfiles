@@ -2,10 +2,10 @@
 	plugins = {
 		treesitter = {
 			enable = true;
-			indent.enable = true;
-			ensure_installed = [
+			settings.indent.enable = true;
+			settings.ensure_installed = [
 				"nix"
-					"gdscript"
+				"gdscript"
 			];
 		};
 

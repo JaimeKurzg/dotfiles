@@ -666,12 +666,12 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-wuByC9PN3VmDvb6NK9isigndZ5AcWOoDWFOK9tu5+5s=",
-        "path": "./homeManagerModules/nvim",
+        "narHash": "sha256-PkRCg3ZNTIvQaOBfKA6gppFyjjF/BUok/bCwlQmj7hU=",
+        "path": "./custom_flakes/nvim",
         "type": "path"
       },
       "original": {
-        "path": "./homeManagerModules/nvim",
+        "path": "./custom_flakes/nvim",
         "type": "path"
       }
     },

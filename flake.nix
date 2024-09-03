@@ -11,7 +11,7 @@
 		stylix.inputs.nixpkgs.follows = "nixpkgs";
 		xremap-flake.url = "github:xremap/nix-flake";
 		mynixvim = {
-			url = "path:./homeManagerModules/nvim";
+			url = "path:./custom_flakes/nvim";
 		};
 	};
 
@@ -63,7 +63,6 @@
 				modules = [ 
 					./hosts/laptop/home.nix
 					inputs.stylix.homeManagerModules.stylix
-					inputs.mynixvim
 				];
 				extraSpecialArgs = {
 					inherit inputs;

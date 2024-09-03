@@ -1,36 +1,40 @@
 {
 	plugins.oil = {
 		enable = true;
-		settings.defaultFileExplorer = true;
-		settings.keymaps = {
-			"<leader>\\" = "actions.select_split";
-			"<leader>r" = "actions.refresh";
-			"<Leader>k" = "actions.parent";
-			"<Leader>j" = "actions.select";
-			"<Leader>p" = "actions.preview";
-			"<Leader>." = "actions.toggle_hidden";
-			"<leader>cd" = "actions.cd";
+		settings = {
+			defaultFileExplorer = true;
+			keymaps = {
+				"<leader>\\" = "actions.select_split";
+				"<leader>r" = "actions.refresh";
+				"<Leader>k" = "actions.parent";
+				"<Leader>j" = "actions.select";
+				"<Leader>p" = "actions.preview";
+				"<Leader>." = "actions.toggle_hidden";
+				"<leader>cd" = "actions.cd";
+				"<C-h>" = false;
+				"<C-l>" = false;
+			};
+			useDefaultKeymaps = false;
 		};
-		settings.useDefaultKeymaps = false;
 	};
 
 	extraConfigLua = ''
 		local prev_file_mark = false
 		vim.keymap.set("n", "<leader>k", function()
-				if prev_file_mark then
+			if prev_file_mark then
 				prev_file_mark = false
 				vim.cmd([[
 					normal! 'F
-				]])
-				else
+					]])
+			else
 				vim.cmd('Oil')
-				end
-				end)
+			end
+		end)
 		vim.keymap.set("n", "<leader>j", function()
-				prev_file_mark = true
-				vim.cmd([[
+			prev_file_mark = true
+			vim.cmd([[
 					normal! mFgf
-				]])
-				end)
+					]])
+		end)
 		'';
 }
