@@ -7,13 +7,12 @@
 
 		home.packages = with pkgs; [
 			zoxide
-				xclip
-				fd
-				zsh
-				fzf
-				zoxide
-				oh-my-zsh
-				bat
+			xclip
+			fd
+			zsh
+			fzf
+			oh-my-zsh
+			bat
 		];
 
 		services.picom = {
@@ -22,11 +21,11 @@
 			backend = "glx";
 			settings = {
 				blur =
-				{ 
-					method = "dual_kawase";
-					size = 10;
-					deviation = 5.0;
-				};
+					{ 
+						method = "dual_kawase";
+						size = 10;
+						deviation = 5.0;
+					};
 
 			};
 		};
@@ -71,7 +70,7 @@
 				bindkey -v '^?' backward-delete-char
 				eval "$(zoxide init zsh --cmd cd)"
 				export NIX_BUILD_SHELL=zsh
-				'';
+			'';
 		};
 		programs.tmux = {
 			enable = true;
@@ -87,10 +86,10 @@
 				unbind %
 
 				set status off
-				'';
+			'';
 			plugins = 
 				with pkgs.tmuxPlugins; [
-				sensible
+					sensible
 					vim-tmux-navigator
 
 					{
@@ -107,7 +106,7 @@ set -g @resurrect-hook-post-save-all 'target=$(readlink -f $resurrect_dir/last);
 						extraConfig = ''
 							set -g @continuum-restore 'on'
 							set -g @continuum-save-interval '1' # minutes
-							'';
+						'';
 					}
 					jump
 				];
