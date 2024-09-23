@@ -44,7 +44,8 @@
 		htop
 		feh
 		gnome.cheese
-		gimp
+		gimp-with-plugins
+		gimpPlugins.bimp
 		lutris
 
 		github-desktop
