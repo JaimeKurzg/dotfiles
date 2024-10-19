@@ -2,7 +2,7 @@
 	plugins.oil = {
 		enable = true;
 		settings = {
-			defaultFileExplorer = true;
+			default_file_explorer = true;
 			keymaps = {
 				"<leader>\\" = "actions.select_split";
 				"<leader>r" = "actions.refresh";
@@ -14,7 +14,7 @@
 				"<C-h>" = false;
 				"<C-l>" = false;
 			};
-			useDefaultKeymaps = false;
+			use_default_keymaps = false;
 		};
 	};
 
