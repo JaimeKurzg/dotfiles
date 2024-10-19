@@ -19,7 +19,7 @@
 config.load_autoconfig(False)
 c.input.mode_override = "normal"
 c.input.insert_mode.auto_load = True
-c.input.insert_mode.auto_enter = True
+c.input.insert_mode.auto_enter = False
 c.input.insert_mode.auto_leave = True
 c.content.javascript.enabled = True
 c.content.javascript.clipboard = "access"
