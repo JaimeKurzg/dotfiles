@@ -5,15 +5,15 @@
 			settings.indent.enable = true;
 			settings.ensure_installed = [
 				"nix"
-				"gdscript"
+				# "gdscript"
 			];
 		};
 
 		lsp = {
 			enable = true;
 			servers = {
-				nil-ls.enable = true;
-				gdscript.enable = true;
+				nil_ls.enable = true;
+				# gdscript.enable = true;
 			};
 		};
 		cmp = {

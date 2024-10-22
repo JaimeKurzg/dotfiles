@@ -14,6 +14,7 @@
 				vim.keymap.set('n','k', 'gk')
 				vim.cmd('ZenMode')
 				vim.opt.linebreak = true
+				vim.cmd("colorscheme base16-ia-light")
 			end
 		''; 
 		};

@@ -109,6 +109,7 @@ set -g @resurrect-hook-post-save-all 'target=$(readlink -f $resurrect_dir/last);
 						'';
 					}
 					jump
+					tmux-thumbs
 				];
 
 		};

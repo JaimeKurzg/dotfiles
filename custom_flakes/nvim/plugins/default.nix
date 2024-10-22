@@ -11,7 +11,6 @@
 ];
 	config = {
 		extraPlugins = with pkgs.vimPlugins; [
-			nvim-web-devicons
 			vim-obsession
 			{
 				plugin = comment-nvim;
@@ -20,10 +19,11 @@
 
 		];
 		plugins = {
+			web-devicons.enable = true;
 			which-key.enable = true;
 			trouble.enable = true;
 			fugitive.enable = true;
-			surround.enable = true;
+			vim-surround.enable = true;
 			tmux-navigator.enable = true;
 		};
 	};
