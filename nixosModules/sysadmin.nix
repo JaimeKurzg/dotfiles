@@ -29,27 +29,37 @@
 
 	environment.systemPackages = with pkgs; [
 		neovim
-			kitty
-			pulseaudioFull # allows for increase and decrease sound
-			playerctl
-			brightnessctl
-			git
-			pavucontrol
+		kitty
+		pulseaudioFull # allows for increase and decrease sound
+		playerctl
+		brightnessctl
+		git
+		pavucontrol
 
-			cinnamon.nemo
-			unzip
-			unstable.nh
+		unzip
+		unstable.nh
 
-			# (pkgs.stdenv.mkDerivation {
-			# 	name = "GK6X";
-			# 	src = pkgs.fetchFromGitHub {
-			# 		owner = "pixeltris";
-			# 		repo = "GK6X";
-			# 		rev = "4ce22cabf46d75b7e2e662c17f9f2e24100a90a3";
-			# 		hash = "sha256-za8CHEVh8mX1hRzNNouS+tLSDHDnJrBT3JnX+tFa4hs=";
-			# 		};
-			# 	})
+		# (pkgs.stdenv.mkDerivation {
+		# 	name = "GK6X";
+		# 	src = pkgs.fetchFromGitHub {
+		# 		owner = "pixeltris";
+		# 		repo = "GK6X";
+		# 		rev = "4ce22cabf46d75b7e2e662c17f9f2e24100a90a3";
+		# 		hash = "sha256-za8CHEVh8mX1hRzNNouS+tLSDHDnJrBT3JnX+tFa4hs=";
+		# 		};
+		# 	})
 	];
+
+	programs.thunar = {
+		plugins = with pkgs.xfce; [
+			thunar-archive-plugin
+			thunar-volman
+			thunar-media-tags-plugin
+		];
+		enable = true;
+	};
+	programs.file-roller.enable = true;
+	services.tumbler.enable = true; # Thumbnail support for images
 
 	programs.zsh.enable = true;
 	users.defaultUserShell = pkgs.zsh;

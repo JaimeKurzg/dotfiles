@@ -53,6 +53,7 @@ sops = {
     defaultSecretsMountPoint = "/run/user/1000/secrets.d";
 };
 
+
 xdg.mimeApps = {
   enable = true;
   
@@ -62,8 +63,8 @@ xdg.mimeApps = {
     "x-scheme-handler/https" = "org.qutebrowser.qutebrowser.desktop";
     "x-scheme-handler/about" = "org.qutebrowser.qutebrowser.desktop";
     "x-scheme-handler/unknown" = "org.qutebrowser.qutebrowser.desktop";
-		"inode/directory" = "nemo.desktop";
-		"inode/file" = "nemo.desktop";
+		"inode/directory" = "thunar.desktop";
+		"inode/file" = "thunar.desktop";
 		"application/pdf" = ["org.gnome.Evince.desktop"];
 	};
 	associations.added = {
