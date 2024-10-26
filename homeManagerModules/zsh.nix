@@ -65,6 +65,10 @@
 				"clip" = "xclip -selection clipboard";
 				"cat" = "bat";
 				"open" = "xdg-open";
+				"v" = "nvim .";
+				"la" = "ls -a";
+				"ll" = "ls -la";
+				"update_nvim" = "nix flake lock --update-input mynixvim";
 			};
 			initExtra = ''
 				bindkey -v '^?' backward-delete-char
@@ -75,7 +79,7 @@
 		programs.tmux = {
 			enable = true;
 			prefix = "C-a";
-			mouse = false;
+			mouse = true;
 			shell = "${pkgs.zsh}/bin/zsh";
 			keyMode = "vi";
 			extraConfig = ''
@@ -109,7 +113,13 @@ set -g @resurrect-hook-post-save-all 'target=$(readlink -f $resurrect_dir/last);
 						'';
 					}
 					jump
-					tmux-thumbs
+					{
+						plugin = tmux-thumbs;
+						extraConfig = ''
+							set -g @thumbs-osc52 1
+						'';
+					}
+					power-theme
 				];
 
 		};
