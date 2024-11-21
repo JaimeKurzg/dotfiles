@@ -15,8 +15,7 @@
 		overrideFolders = true;
 		settings = {
 			devices = {
-				"pc" = lib.mkIf ( hostname == "laptop" ) { id = "TABIGRJ-RBQK5UM-7EFGU3O-WRU6UZI-53IVYNE-QO62WYY-5FUZL2U-PUZ2TQI"; };
-				"laptop" = lib.mkIf ( hostname == "pc" ) { id = "PTN3SAM-EVVUHD3-4TG7FGL-YOOW6DL-J25A5TO-CXSYRBX-TS467W3-7LFBPQF"; };
+				"laptop" = { id = "PTN3SAM-EVVUHD3-4TG7FGL-YOOW6DL-J25A5TO-CXSYRBX-TS467W3-7LFBPQF"; };
 				"phone" = { id = "EVPUD4D-AYESX45-3ADG2LA-6ITHZF3-5WMBUFK-URVPQSZ-Z7V22VZ-3QN4EA3"; };
 			};
 			folders = {
