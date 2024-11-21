@@ -77,12 +77,12 @@
 		key = "<leader>s";
 		action = '':%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>'';
 	}
-	{
-		mode = "n";
-		key = "<leader>x";
-		action = "<cmd>!chmod +x %<CR>";
-		options = { silent = true; };
-	}
+	# {
+	# 	mode = "n";
+	# 	key = "<leader>x";
+	# 	action = "<cmd>!chmod +x %<CR>";
+	# 	options = { silent = true; };
+	# }
 	{
 		mode = "n";
 		key = "=a";
