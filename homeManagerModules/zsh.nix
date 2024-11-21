@@ -42,25 +42,38 @@
 
 		programs.fzf = {
 			enable = true;
+			tmux.enableShellIntegration = true;
 			enableZshIntegration = true;
 		};
 
+		# programs.oh-my-posh = {
+		# 	enable = true;
+		# 	useTheme = "";
+		# 	enableZshIntegration = true;
+		# };
 		programs.zsh = {
 			enable = true;
 			autocd = true;
 			autosuggestion.enable = true;
 			enableCompletion = true;
 			defaultKeymap = "viins";
-			plugins = [{
-				name = "zsh-nix-shell";
-				file = "nix-shell.plugin.zsh";
-				src = pkgs.fetchFromGitHub {
-					owner = "chisui";
-					repo = "zsh-nix-shell";
-					rev = "v0.8.0";
-					sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
-				};
-			}];
+			plugins = [
+				{ # allows using zsh in nix-shell
+					name = "zsh-nix-shell";
+					file = "nix-shell.plugin.zsh";
+					src = pkgs.fetchFromGitHub {
+						owner = "chisui";
+						repo = "zsh-nix-shell";
+						rev = "v0.8.0";
+						sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
+					};
+				}
+				{
+					name = "vi-mode";
+					src = pkgs.zsh-vi-mode;
+					file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+				}
+			];
 			shellAliases = {
 				"clip" = "xclip -selection clipboard";
 				"cat" = "bat";
@@ -69,11 +82,15 @@
 				"la" = "ls -a";
 				"ll" = "ls -la";
 				"update_nvim" = "nix flake lock --update-input mynixvim";
+				"dot" = "tmuxp load dot";
+				"tp" = "tmuxp load dot";
 			};
 			initExtra = ''
 				bindkey -v '^?' backward-delete-char
 				eval "$(zoxide init zsh --cmd cd)"
-				export NIX_BUILD_SHELL=zsh
+				function zvm_after_init() {
+					zvm_bindkey viins "^R" fzf-history-widget
+				}
 			'';
 		};
 		programs.tmux = {
@@ -81,7 +98,8 @@
 			prefix = "C-a";
 			mouse = true;
 			shell = "${pkgs.zsh}/bin/zsh";
-			keyMode = "vi";
+			# keyMode = "vi";
+			tmuxp.enable = true;
 			extraConfig = ''
 # split panes using | and -
 				bind | split-window -h
@@ -95,23 +113,6 @@
 				with pkgs.tmuxPlugins; [
 					sensible
 					vim-tmux-navigator
-
-					{
-						plugin = resurrect;
-						extraConfig = ''
-resurrect_dir="$HOME/.tmux/resurrect"
-set -g @resurrect-dir $resurrect_dir
-set -g @resurrect-hook-post-save-all 'target=$(readlink -f $resurrect_dir/last); sed "s| --cmd .*-vim-pack-dir||g; s|/etc/profiles/per-user/$USER/bin/||g; s|/home/$USER/.nix-profile/bin/||g" $target | sponge $target'
-
-						'';
-					}
-					{
-						plugin = continuum;
-						extraConfig = ''
-							set -g @continuum-restore 'on'
-							set -g @continuum-save-interval '1' # minutes
-						'';
-					}
 					jump
 					{
 						plugin = tmux-thumbs;
@@ -119,7 +120,6 @@ set -g @resurrect-hook-post-save-all 'target=$(readlink -f $resurrect_dir/last);
 							set -g @thumbs-osc52 1
 						'';
 					}
-					power-theme
 				];
 
 		};
