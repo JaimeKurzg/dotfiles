@@ -81,9 +81,9 @@
 				"v" = "nvim .";
 				"la" = "ls -a";
 				"ll" = "ls -la";
-				"update_nvim" = "nix flake lock --update-input mynixvim";
+				"update_nvim" = "nix flake lock --update-input mynixvim && nh home switch";
 				"dot" = "tmuxp load dot";
-				"tp" = "tmuxp load dot";
+				"tp" = "tmuxp load";
 			};
 			initExtra = ''
 				bindkey -v '^?' backward-delete-char

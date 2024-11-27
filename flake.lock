@@ -679,7 +679,7 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-gxBFyMaPtQjDzFBAzQ+Gj91JtQmZ6Frz1ovqjZjzBp0=",
+        "narHash": "sha256-DMUfH3A38gKJ5eoc4mR8tbYPfDmhKdKi3pUM8voKVPM=",
         "path": "./custom_flakes/nvim",
         "type": "path"
       },
