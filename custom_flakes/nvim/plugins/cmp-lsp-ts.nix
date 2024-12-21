@@ -7,11 +7,15 @@
 				"nix"
 			];
 		};
-
 		lsp = {
 			enable = true;
 			servers = {
 				nixd.enable = true;
+				haxe_language_server = {
+					enable = true;
+					package = null;
+					cmd = ["node /home/jaimek/dotfiles/custom_flakes/haxe/haxe-language-server/bin/server.js"] ;
+				};
 			};
 		};
 		cmp = {
@@ -25,7 +29,7 @@
 					{name = "buffer";}
 				];
 				mapping = {
-					"<C-Space>" = "cmp.mapping.complete()";
+					"<C-Space>" = "cmp.mapping.confirm({ select = true })";
 					"<C-d>" = "cmp.mapping.scroll_docs(-4)";
 					"<C-e>" = "cmp.mapping.abort()";
 					"<C-f>" = "cmp.mapping.scroll_docs(4)";

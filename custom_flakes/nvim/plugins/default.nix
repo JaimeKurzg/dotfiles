@@ -7,6 +7,7 @@
 	./cmp-lsp-ts.nix
 	./color-picker.nix
 	./writer.nix
+	./haxe.nix
 	#./godot-nvim.nix
 ];
 	config = {
