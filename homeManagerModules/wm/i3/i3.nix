@@ -34,7 +34,7 @@
 					"${modifier}+d" = "exec ${pkgs.rofi}/bin/rofi -show drun";
 					"${modifier}+0" = "workspace number 10";
 					"${modifier}+Shift+0" = "move container to workspace number 10";
-					"${modifier}+w" = "workspace --no-auto-back-and-forth number 10; exec kitty -e spotify_player";
+					"${modifier}+o" = "workspace --no-auto-back-and-forth number 10; exec kitty -e spotify_player";
 					"${modifier}+h" = "focus left";
 					"${modifier}+j" = "focus down";
 					"${modifier}+k" = "focus up";
