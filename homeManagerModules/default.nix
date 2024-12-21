@@ -21,5 +21,6 @@
 	home.packages = [
 		pkgs.ripgrep
 		inputs.mynixvim.packages.${pkgs.system}.default
+		pkgs.firefox
 	];
 }
