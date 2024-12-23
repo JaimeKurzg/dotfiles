@@ -17,5 +17,8 @@
 		scrolloff = 8;
 		signcolumn = "yes";
 		updatetime = 50;
+		foldmethod = "expr";
+		foldexpr = "nvim_treesitter#foldexpr()";
+		foldenable = false;
 	};
 }

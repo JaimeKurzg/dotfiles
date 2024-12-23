@@ -27,6 +27,12 @@
 			vim-surround.enable = true;
 			tmux-navigator.enable = true;
 		};
+		keymaps = [{ 
+			mode = "n";
+			key = "<leader>xx";
+			action = "<cmd>Trouble diagnostics toggle<cr>";
+		}];
+
 	};
 
 }
