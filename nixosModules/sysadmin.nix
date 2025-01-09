@@ -4,12 +4,11 @@
 	];
 
 	nixpkgs.config.allowUnfree = true;
-	nix.package = pkgs.nixFlakes;
+	# nix.package = pkgs.nixFlakes;
 	nix.settings.experimental-features=["nix-command" "flakes"];
 
 	services.printing.enable = true;
 
-	sound.enable = true;
 	hardware.pulseaudio.enable = false;
 	security.rtkit.enable = true;
 	services.pipewire = {
@@ -39,15 +38,6 @@
 		unzip
 		unstable.nh
 
-		# (pkgs.stdenv.mkDerivation {
-		# 	name = "GK6X";
-		# 	src = pkgs.fetchFromGitHub {
-		# 		owner = "pixeltris";
-		# 		repo = "GK6X";
-		# 		rev = "4ce22cabf46d75b7e2e662c17f9f2e24100a90a3";
-		# 		hash = "sha256-za8CHEVh8mX1hRzNNouS+tLSDHDnJrBT3JnX+tFa4hs=";
-		# 		};
-		# 	})
 	];
 
 	programs.thunar = {

@@ -2,10 +2,10 @@
 	description = "Main Flake";
 
 	inputs = {
-		nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-24.05";
+		nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-24.11";
 		nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 		sops-nix.url = "github:Mic92/sops-nix";
-		home-manager.url = "github:nix-community/home-manager/release-24.05";
+		home-manager.url = "github:nix-community/home-manager/release-24.11";
 		home-manager.inputs.nixpkgs.follows = "nixpkgs";
 		stylix.url = "github:danth/stylix/release-23.11";
 		stylix.inputs.nixpkgs.follows = "nixpkgs";
@@ -26,17 +26,17 @@
 			./homeManagerModules/nvim/default.nix
 		];
 		nixosConfigurations = {
-			pc = lib.nixosSystem{
-				inherit system;
-				modules = [
-					./hosts/pc/configuration.nix
-				];
-				specialArgs = { 
-					inherit inputs; 
-					inherit unstable;
-					hostname = "pc";
-				};
-			};
+			# pc = lib.nixosSystem{
+			# 	inherit system;
+			# 	modules = [
+			# 		./hosts/pc/configuration.nix
+			# 	];
+			# 	specialArgs = { 
+			# 		inherit inputs; 
+			# 		inherit unstable;
+			# 		hostname = "pc";
+			# 	};
+			# };
 			laptop = lib.nixosSystem {
 				inherit system;
 				modules = [

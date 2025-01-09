@@ -5,7 +5,7 @@
 		];
 	};
 	services.syncthing = 
-		let otherDevices = lib.lists.remove hostname [ "pc" "laptop" ];
+		let otherDevices = lib.lists.remove hostname [ "laptop" ];
 	in {
 		enable = true;
 		user = "jaimek";
