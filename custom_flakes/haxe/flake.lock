@@ -1,0 +1,44 @@
+{
+  "nodes": {
+    "haxe-language-server": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1734968819,
+        "narHash": "sha256-uw3lFqiDw9JWmgw957gkE432h/dAEW4Prm4wTm1gVPk=",
+        "owner": "vshaxe",
+        "repo": "haxe-language-server",
+        "rev": "2f03d9d82e750f814082c0453fd7cd2ab74ffd18",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vshaxe",
+        "repo": "haxe-language-server",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1735471104,
+        "narHash": "sha256-0q9NGQySwDQc7RhAV2ukfnu7Gxa5/ybJ2ANT8DQrQrs=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "88195a94f390381c6afcdaa933c2f6ff93959cb4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "haxe-language-server": "haxe-language-server",
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

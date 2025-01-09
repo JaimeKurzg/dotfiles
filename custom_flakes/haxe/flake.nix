@@ -1,35 +1,65 @@
 {
-	description = "A very basic flake";
+	description = "haxe-language-server";
 
 	inputs = {
 		nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+
+		haxe-language-server.url = "github:vshaxe/haxe-language-server";
+		haxe-language-server.flake = false;
 	};
 
-	outputs = { self, nixpkgs }: {
+	outputs = { self, nixpkgs, haxe-language-server}: 
+		let 
+			pkgs = nixpkgs.legacyPackages.x86_64-linux;
 
-		haxe-language-server = nixpkgs.stdenv.mkDerivation {
-			pname = "haxe-language-server";
-			version = "900c057";
-			src = nixpkgs.fetchFromGitHub {
-				owner = "vshaxe";
-				repo = "haxe-language-server";
-				rev = "900c0570372f8f592724b25ac52ababe1ef5717";
-				hash = "sha256-7bg7/3drvQfxw8Kq0CUhtti8jad+2XID28y6Ucpkd6k";
+			packageLock = builtins.fromJSON (builtins.readFile (haxe-language-server + "/package-lock.json"));
+
+			deps = builtins.attrValues (removeAttrs packageLock.packages [ "" ])
+				++ builtins.attrValues (removeAttrs packageLock.dependencies [ "" ]);
+
+
+			tarballs = map (p: pkgs.fetchurl { url = p.resolved; hash = p.integrity; }) deps;
+
+			tarballsFile = pkgs.writeTextFile {
+				name = "tarballs";
+				text = builtins.concatStringsSep "\n" tarballs;
 			};
 
-			buildInputs = [
-				nixpkgs.nodejs
-			];
 
-			buildPhase = ''
-			npm ci
-			npx lix run vshaxe-build -t language-server
-			'';
+		in
+			{
+			packages.x86_64-linux.default = pkgs.stdenv.mkDerivation {
+				inherit (packageLock) name version;
+				src = haxe-language-server;
+				buildInputs = [
+					pkgs.nodejs
+				];
 
 
+				buildPhase = ''
+					export HOME=$PWD/.home
+					export npm_config_cache=$PWD/.npm
+					mkdir -p $out/js
+					cd $out/js
+					cp -r $src/. .
 
+					while read package
+					do
+					echo "caching $package"
+					npm cache add "$package"
+					done <${tarballsFile}
+
+					npm ci
+				'';
+
+					# npx lix run vshaxe-build -t language-server
+				installPhase = ''
+					ln -s $out/js/node_modules/.bin $out/bin
+				'';
+
+
+			};
 		};
 
 
-	};
 }
