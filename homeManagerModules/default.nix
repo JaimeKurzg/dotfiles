@@ -5,12 +5,12 @@
 		./games.nix
 		./style.nix
 		./qutebrowser.nix
-		# ./youtube.nix
+		./youtube.nix
 		./gameDev.nix
 		./wm/i3/i3.nix
 		./spotify/spotify.nix
 	];
-	# youtube.enable = lib.mkDefault true;
+	youtube.enable = lib.mkDefault true;
 	zsh.enable = lib.mkDefault true;
 	i3.enable = lib.mkDefault true;
 	qutebrowser.enable = lib.mkDefault true;
