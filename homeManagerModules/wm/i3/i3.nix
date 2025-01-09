@@ -44,13 +44,12 @@
 					"XF86AudioRaiseVolume" = "exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+";
 					"XF86AudioLowerVolume" = "exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%-";
 					"XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+					"Print" = ''exec ${pkgs.gnome.gnome-screenshot}/bin/gnome-screenshot -i'';
+					"${modifier}+Print" = ''exec ${pkgs.gnome.gnome-screenshot}/bin/gnome-screenshot -a'';
+					# "Super+Print" = '''';
 				};
 			};
 			extraConfig = ''
-#			input 2362:14408:PIXA3848:01_093A:3848_Touchpad {
-#				click_method buttonareas
-#				middle_emulation enabled
-#			}
 				'';
 		};
 
