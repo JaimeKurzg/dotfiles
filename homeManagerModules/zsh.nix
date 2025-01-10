@@ -81,7 +81,7 @@
 				"v" = "nvim .";
 				"la" = "ls -a";
 				"ll" = "ls -la";
-				"update_nvim" = "nix flake lock --update-input mynixvim && nh home switch";
+				"update_nvim" = "nix flake update mynixvim && nh home switch";
 				"dot" = "tmuxp load dot";
 				"tp" = "tmuxp load";
 			};

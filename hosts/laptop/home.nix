@@ -7,7 +7,7 @@ imports = [
 ];
 
 home.packages = with pkgs; [
-	gnome.zenity # allows lmms to open file manager window
+	zenity # allows lmms to open file manager window
 	element-desktop
 	audacity
 ];

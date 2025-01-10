@@ -8,7 +8,7 @@ imports = [
 
 home.packages = with pkgs; [
 	cinnamon.nemo
-	gnome.zenity
+	zenity
 	element-desktop
 ];
 
