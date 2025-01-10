@@ -5,7 +5,7 @@
 	./telescope.nix
 	./file-movement.nix
 	./cmp-lsp-ts.nix
-	./color-picker.nix
+	./colorizer.nix
 	./writer.nix
 	./haxe.nix
 	#./godot-nvim.nix

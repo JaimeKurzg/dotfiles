@@ -1,34 +1,35 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 
 # Created By @icanwalkonwater
 # Edited and ported to Nix by Th0rgal
+# Edited again by JaimeKurz
 
 let
 	
 	font = (pkgs.nerdfonts.override { fonts = [ "OpenDyslexic" ]; });
-  ac = "#1E88E5";
-  mf = "#383838";
+	colors = config.lib.stylix.colors;
+	bg = "#${colors.base00}";
+	fg = "#${colors.base05}";
 
-  bg = "#00000000";
-  fg = "#FFFFFF";
+  ac = "#${colors.base0D}";
+  mf = "#${colors.base03}";
 
   # Colored
-  primary = "#91ddff";
-
+  primary = "#${colors.base0B}";
   # Dark
-  secondary = "#141228";
+  secondary = "#${colors.base00}";
 
-  # Colored (light)
-  tertiary = "#65b2ff";
+  # Colored light
+  tertiary = "#${colors.base0C}";
 
   # white
-  quaternary = "#ecf0f1";
+  quaternary = "#${colors.base07}";
 
   # middle gray
-  quinternary = "#20203d";
+  quinternary = "#${colors.base02}";
 
-  # Red
-  urgency = "#e74c3c";
+  # Red-Orange
+  urgency = "#${colors.base08}";
 
 in {
   services.polybar = {

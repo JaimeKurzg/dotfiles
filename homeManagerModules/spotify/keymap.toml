@@ -6,10 +6,10 @@ command = "ChooseSelected"
 key_sequence = "space j"
 [[keymaps]]
 command = "FocusNextWindow"
-key_sequence = "l"
+key_sequence = "C-l"
 [[keymaps]]
 command = "FocusPreviousWindow"
-key_sequence = "h"
+key_sequence = "C-h"
 [[keymaps]]
 command = "PageSelectNextOrScrollDown"
 key_sequence = "C-d"
