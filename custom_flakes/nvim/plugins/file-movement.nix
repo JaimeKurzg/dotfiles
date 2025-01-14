@@ -18,6 +18,7 @@
 		};
 	};
 
+	# navigate between files. Similar to C-o C-i
 	extraConfigLua = ''
 		local prev_file_mark = false
 		vim.keymap.set("n", "<leader>k", function()
@@ -30,11 +31,20 @@
 				vim.cmd('Oil')
 			end
 		end)
+		-- open folds
 		vim.keymap.set("n", "<leader>j", function()
-			prev_file_mark = true
-			vim.cmd([[
-					normal! mFgf
-					]])
+			if vim.fn['foldclosed'](vim.fn['line'](".")) then
+				vim.cmd([[
+					normal! zo
+				]])
+			else
+				-- set a mark to return to via <leader>k
+				prev_file_mark = true
+				vim.cmd([[
+						normal! mFgf
+						]])
+			end
+		
 		end)
 		'';
 }
