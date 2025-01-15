@@ -10,7 +10,6 @@
 			xclip
 			fd
 			zsh
-			fzf
 			oh-my-zsh
 			bat
 		];
@@ -46,17 +45,13 @@
 			enableZshIntegration = true;
 		};
 
-		# programs.oh-my-posh = {
-		# 	enable = true;
-		# 	useTheme = "";
-		# 	enableZshIntegration = true;
-		# };
 		programs.zsh = {
 			enable = true;
 			autocd = true;
 			autosuggestion.enable = true;
 			enableCompletion = true;
 			defaultKeymap = "viins";
+			syntaxHighlighting.enable = true;
 			plugins = [
 				{ # allows using zsh in nix-shell
 					name = "zsh-nix-shell";
@@ -91,7 +86,6 @@
 				function zvm_after_init() {
 					zvm_bindkey viins "^R" fzf-history-widget
 				}
-
 			'';
 		};
 		programs.tmux = {
@@ -108,9 +102,10 @@
 				unbind '"'
 				unbind %
 
-				
-				bind -n C-u copy-mode \; send-key -N 16 k
-				bind -n C-d copy-mode \; send-key -N 16 j
+				# Ctrl-u and C-d scroll up and down, but passes through to vim
+				# ideally this would work directly in zsh
+				bind -n C-u if -F "#{?#{m:\*vim\*,#{pane_current_command}},0,1}" "copy-mode \; send-key -N 16 k" "send-key C-u"
+				bind -n C-d if -F "#{?#{m:\*vim\*,#{pane_current_command}},0,1}" "copy-mode \; send-key -N 16 j" "send-key C-d"
 				bind -T copy-mode-vi Escape send-keys -X cancel
 
 				set status off
