@@ -9,13 +9,10 @@
 			unstable.godot_4
 			aseprite
 			zip
+
 			# (pkgs.callPackage ./godot.nix {})
 			(import ./shScripts/nvim-godot.nix { inherit pkgs; })
 		];
 
-		# programs.nixvim = {
-		# 	extraPlugins = with pkgs.vimPlugins; [
-		# 	];
-		# };
 	};
 }
