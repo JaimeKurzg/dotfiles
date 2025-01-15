@@ -91,6 +91,7 @@
 				function zvm_after_init() {
 					zvm_bindkey viins "^R" fzf-history-widget
 				}
+
 			'';
 		};
 		programs.tmux = {
@@ -98,7 +99,7 @@
 			prefix = "C-a";
 			mouse = true;
 			shell = "${pkgs.zsh}/bin/zsh";
-			# keyMode = "vi";
+			keyMode = "vi";
 			tmuxp.enable = true;
 			extraConfig = ''
 # split panes using | and -
@@ -107,19 +108,19 @@
 				unbind '"'
 				unbind %
 
+				
+				bind -n C-u copy-mode \; send-key -N 16 k
+				bind -n C-d copy-mode \; send-key -N 16 j
+				bind -T copy-mode-vi Escape send-keys -X cancel
+
 				set status off
 			'';
 			plugins = 
 				with pkgs.tmuxPlugins; [
 					sensible
 					vim-tmux-navigator
-					jump
-					{
-						plugin = tmux-thumbs;
-						extraConfig = ''
-							set -g @thumbs-osc52 1
-						'';
-					}
+					copycat
+					yank
 				];
 
 		};
