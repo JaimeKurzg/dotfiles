@@ -26,6 +26,8 @@
 			fugitive.enable = true;
 			vim-surround.enable = true;
 			tmux-navigator.enable = true;
+			vimtex.enable = true;
+			lsp.servers.texlab.enable = true;
 		};
 		keymaps = [{ 
 			mode = "n";
