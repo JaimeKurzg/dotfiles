@@ -105,7 +105,7 @@
 				# Ctrl-u and C-d scroll up and down, but passes through to vim
 				# ideally this would work directly in zsh
 				bind -n C-u if -F "#{?#{m:\*vim\*,#{pane_current_command}},0,1}" "copy-mode \; send-key -N 16 k" "send-key C-u"
-				bind -n C-d if -F "#{?#{m:\*vim\*,#{pane_current_command}},0,1}" "copy-mode \; send-key -N 16 j" "send-key C-d"
+				bind -T copy-mode-vi C-d send-key -N 16 j
 				bind -T copy-mode-vi Escape send-keys -X cancel
 
 				set status off
