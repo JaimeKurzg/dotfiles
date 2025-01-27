@@ -31,7 +31,9 @@
 					"${modifier}+t" = "exec ${pkgs.kitty}/bin/kitty";
 					"${modifier}+b" = "workspace --no-auto-back-and-forth number 3; exec ${pkgs.qutebrowser}/bin/qutebrowser";
 					"${modifier}+q" = "kill";
-					"${modifier}+d" = "exec ${pkgs.rofi}/bin/rofi -show drun";
+					"${modifier}+d" = "exec rofi -show drun";
+					"${modifier}+c" = "exec rofi -show calc -modi calc -no-show-match -no-sort";
+					"${modifier}+n" = "exec blueman-manager";
 					"${modifier}+0" = "workspace number 10";
 					"${modifier}+Shift+0" = "move container to workspace number 10";
 					"${modifier}+o" = "workspace --no-auto-back-and-forth number 10; exec kitty -e spotify_player";

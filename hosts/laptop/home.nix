@@ -32,6 +32,7 @@ home.sessionVariables = {
 };
 
 programs.rofi = {
+	plugins = [ pkgs.rofi-calc ];
 	enable = true;
 };
 
