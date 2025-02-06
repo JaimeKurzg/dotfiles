@@ -1,16 +1,14 @@
 { config, lib, pkgs, unstable, ... }:
 {
 	options = {
-		zsh.enable = lib.mkEnableOption "enables terminal config";
+		shell_config.enable = lib.mkEnableOption "enables terminal config";
 	};
-	config = lib.mkIf config.zsh.enable {
+	config = lib.mkIf config.shell_config.enable {
 
 		home.packages = with pkgs; [
 			zoxide
 			xclip
 			fd
-			zsh
-			oh-my-zsh
 			bat
 		];
 

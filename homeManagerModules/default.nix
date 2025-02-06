@@ -1,7 +1,7 @@
 {lib, pkgs, inputs, ...}:
 {
 	imports = [
-		./zsh.nix
+		./shell.nix
 		./games.nix
 		./style.nix
 		./qutebrowser.nix
@@ -11,7 +11,7 @@
 		./spotify/spotify.nix
 	];
 	youtube.enable = lib.mkDefault true;
-	zsh.enable = lib.mkDefault true;
+	shell_config.enable = lib.mkDefault true;
 	i3.enable = lib.mkDefault true;
 	qutebrowser.enable = lib.mkDefault true;
 	globalstyle.enable = lib.mkDefault true;
