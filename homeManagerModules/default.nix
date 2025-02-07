@@ -1,7 +1,7 @@
 {lib, pkgs, inputs, ...}:
 {
 	imports = [
-		./shell.nix
+		./shell
 		./games.nix
 		./style.nix
 		./qutebrowser.nix
